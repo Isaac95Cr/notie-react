@@ -1,0 +1,8 @@
+{
+  "name": "notie-react",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/PastorCR/notie-react.git",
+  "author": "PastorCR <isakucorrales@gmail.com>",
+  "license": "MIT"
+}
