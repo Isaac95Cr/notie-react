@@ -12,14 +12,14 @@ module.exports = {
   devtool: 'source-map',
   output: {
     filename: 'bundle.js',
-    path: path.join(__dirname, '/dist'),
+    path: path.join(__dirname, '/dist')
   },
   devServer: {
     publicPath: '/public/',
     historyApiFallback: true
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.json'],
+    extensions: ['.js', '.jsx', '.json']
   },
   stats: {
     colors: true,
@@ -40,9 +40,21 @@ module.exports = {
           'css-loader',
           'postcss-loader',
           'sass-loader',
-        ],
+        ]
       },
-    ],
+      {
+        test: /\.woff$/,
+        loader: "url-loader?limit=10000&mimetype=application/font-woff&name=[path][name].[ext]"
+      },
+      {
+        test: /\.woff2$/,
+        loader: "url-loader?limit=10000&mimetype=application/font-woff2&name=[path][name].[ext]"
+      },
+      {
+        test: /\.(eot|ttf|svg|gif|png)$/,
+        loader: "file-loader"
+      }
+    ]
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -58,5 +70,10 @@ module.exports = {
         ],
       },
     }),
-  ],
+    new webpack.ProvidePlugin({
+        jQuery: 'jquery',
+        $: 'jquery',
+        jquery: 'jquery'
+    })
+  ]
 };

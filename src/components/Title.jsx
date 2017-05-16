@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Title = ({text}) => {
+const Title = ({ text }) => {
   return (
     <div>
       <h1>{text}</h1>
