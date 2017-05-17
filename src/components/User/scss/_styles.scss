@@ -1,0 +1,18 @@
+  .user-photo-container {
+    //@extend %side-assets;
+    left: $header-side-assets-center-offset;
+
+    .user-photo {
+      border-radius: $header-user-photo-border-radius;
+      cursor: pointer;
+      max-height: $header-user-photo-dimension;
+      max-width: $header-user-photo-dimension;
+      overflow: hidden;
+
+
+      img {
+        max-height: 100%;
+        max-width: 100%;
+      }
+    }
+  }
