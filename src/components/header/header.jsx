@@ -13,7 +13,7 @@ class Header extends React.Component {
               <div className="col-xs-2">
                   <div className="logo-container">
                       <div className="logo">
-                          <img src={require('./img/NotieLogo.png')} alt="" />
+                          <img src={require('./img/NotieLogo.svg')} alt="" />
                       </div>
                   </div>
               </div>

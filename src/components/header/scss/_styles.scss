@@ -41,9 +41,9 @@
       max-width: 200px;
       width: 100%;
 
-      // @include sm {
-      //   max-width: $header-icon-container-max-width;
-      // }
+      @include sm {
+        max-width: $header-icon-container-max-width;
+      }
 
       button {
         border-radius: $header-icon-border-radius;
@@ -74,9 +74,9 @@
         }
 
         &.hide-on-desktop {
-          // @include sm {
-          //   display: none;
-          // }
+          @include sm {
+            display: none;
+          }
         }
       }
     }
