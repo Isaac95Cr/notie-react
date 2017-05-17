@@ -1,14 +1,16 @@
-  .user-photo-container {
-    //@extend %side-assets;
-    left: $header-side-assets-center-offset;
+@import "./../../scss/variables";
+@import "./../../scss/mixins";
 
-    .user-photo {
+.logo-container {
+    //@extend %side-assets;
+    right: $header-side-assets-center-offset;
+
+    .logo {
       border-radius: $header-user-photo-border-radius;
       cursor: pointer;
       max-height: $header-user-photo-dimension;
       max-width: $header-user-photo-dimension;
       overflow: hidden;
-
 
       img {
         max-height: 100%;
