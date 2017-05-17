@@ -1,5 +1,7 @@
 import React from 'react';
-import './scss/header.scss'
+import './scss/Header.scss'
+import Logo from '../../components/Logo/Logo'
+import User from '../../components/User/User'
 
 class Header extends React.Component{
     constructor(props){
@@ -10,11 +12,7 @@ class Header extends React.Component{
             <header className="header-section container-fluid">
                 <div className="row">
                     <div className="col-xs-2">
-                        <div className="logo-container">
-                            <div className="logo">
-                                <img src="../src/components/header/img/NotieLogo.png" alt=""/>
-                            </div>
-                        </div>
+                        <Logo />
                     </div>
                     <div className="col-xs-8">
                         <div className="main-menu">
@@ -38,11 +36,7 @@ class Header extends React.Component{
                         </div>
                     </div>
                     <div className="col-xs-2">
-                        <div className="user-photo-container">
-                            <div className="user-photo">
-                                <img src={require('./img/tyrion.jpg')} alt=""/>
-                            </div>
-                        </div>
+                        <User />
                     </div>
                 </div>
             </header>
