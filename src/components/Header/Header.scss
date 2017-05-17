@@ -1,3 +1,6 @@
+@import "./../../scss/variables";
+@import "./../../scss/mixins";
+
 .header-section {
   background-color: $header-background-color;
   height: $header-height;

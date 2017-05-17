@@ -1,5 +1,5 @@
 import React from 'react';
-import './scss/Header.scss'
+import './Header.scss'
 import Logo from '../../components/Logo/Logo'
 import User from '../../components/User/User'
 

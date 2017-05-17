@@ -1,12 +1,14 @@
 import React from 'react';
 import { render } from 'react-dom';
+import MainSection from './components/MainSection/MainSection';
 import Header from './components/Header/Header';
 import './../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
 import './scss/app.scss';
 
 const App = () => (
-  <div>
+  <div className='app container-fluid'>
     <Header />
+    <MainSection />
   </div>
 );
 

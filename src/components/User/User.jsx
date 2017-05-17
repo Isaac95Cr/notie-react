@@ -1,5 +1,5 @@
 import React from 'react'
-import './scss/User.scss'
+import './User.scss'
 
 class User extends React.Component{
     constructor(props){

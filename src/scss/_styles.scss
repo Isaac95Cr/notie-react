@@ -1,0 +1,17 @@
+.app {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: stretch;
+  width: 100%;
+  height: $app-height;
+
+  & > div,
+  & > header,
+  & > main {
+    width: 100%;
+  }
+
+  &.container-fluid {
+    padding: 0;
+  }
+}
