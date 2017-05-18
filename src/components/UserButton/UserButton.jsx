@@ -1,5 +1,5 @@
 import React from 'react'
-import './User.scss'
+import './UserButton.scss'
 
 class User extends React.Component{
     constructor(props){
@@ -9,7 +9,7 @@ class User extends React.Component{
         return(
             <div className="user-photo-container">
                 <div className="user-photo">
-                    <img src="../src/components/header/img/tyrion.jpg" alt=""/>
+                    <img src="../src/components/Header/img/tyrion.jpg" alt=""/>
                 </div>
             </div>
         )

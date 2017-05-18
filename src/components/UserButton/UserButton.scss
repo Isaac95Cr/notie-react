@@ -1,9 +1,8 @@
-$header-side-assets-center-offset: 15px;
-$header-user-photo-dimension: 48px;
-$header-user-photo-border-radius: 25px;
+@import "./../../scss/variables";
+@import "./../../scss/mixins";
 
   .user-photo-container {
-   // @extend %side-assets;
+    @extend %side-assets;
     left: $header-side-assets-center-offset;
 
     .user-photo {
