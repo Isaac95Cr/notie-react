@@ -1,0 +1,25 @@
+@import "./../../scss/variables";
+@import "./../../scss/mixins";
+
+.aside-notes {
+    .dashboard{
+        height: 500px;
+        .list{
+            margin-top: 2rem;
+                .list-content, .list-content{
+                    height: 200px;
+                    overflow: auto;
+                .list-item{
+                    background-color: white;
+                    border-bottom: 1px solid #ddd;
+                    border-radius: 2px;
+                    padding: 0.5rem;
+                    &:hover{
+                        background-color: $aside-notes-icon-color;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}
