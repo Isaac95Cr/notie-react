@@ -1,29 +1,27 @@
 import React from 'react';
-import MainSection from '../../components/MainSection/MainSection';
-import Header from '../../components/Header/Header';
+import MainSection from './../MainSection/MainSection';
+import Header from './../Header/Header';
 
-class AppContainer extends React.Component{
-    constructor(props){
+class AppContainer extends React.Component {
+    constructor(props) {
         super(props);
-
         this.handleToggleAside = this.handleToggleAside.bind(this);
-
-        this.state = {
-            visible: false
-        }
+        this.state = { visible: false }
     }
 
-    handleToggleAside(){
+    handleToggleAside() {
         this.setState(prev => ({ visible: !prev.visible }));
     }
 
-    render(){
-        return(
+    render() {
+      const { handleToggleAside, state } = this;
+      const { visible } = state;
+      return (
         <div className='app container-fluid'>
-            <Header toggleAside = {this.handleToggleAside} />
-            <MainSection visible = {this.state.visible}/>
+            <Header toggleAside = {handleToggleAside} />
+            <MainSection visible = {visible} />
         </div>
-        )
+      )
     }
 }
 
