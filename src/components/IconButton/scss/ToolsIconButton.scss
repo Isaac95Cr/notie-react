@@ -1,17 +1,19 @@
 @import "./../../../scss/variables";
 
-.icon-button {
+button.icon-button {
+  border: 1px solid $side-tools-icon-background-color;
+
   i {
-    color: $header-icon-background-color;
-    font-size: $header-icon-font-size;
+    color: $side-tools-icon-background-color;
+    font-size: $side-tools-icon-font-size;
     transition: $icon-button-trasition-time ease-in;
   }
 
   &:hover {
-    background-color: $header-icon-background-color;
+    background-color: $side-tools-icon-background-color;
 
     i {
-      color: $header-background-color;
+      color: $side-tools-background-color;
     }
   }
 }
