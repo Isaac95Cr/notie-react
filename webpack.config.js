@@ -34,6 +34,10 @@ module.exports = {
         loaders: ['babel-loader'],
       },
       {
+        test: /\.json$/,
+        use: 'json-loader'
+      },
+      {
         test: /\.scss$/,
         use: [
           'style-loader',
