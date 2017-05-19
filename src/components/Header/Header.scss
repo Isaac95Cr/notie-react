@@ -1,5 +1,4 @@
 @import "./../../scss/variables";
-@import "./../../scss/mixins";
 
 .header-section {
   background-color: $header-background-color;
@@ -12,58 +11,5 @@
     height: $header-height;
     justify-content: center;
     position: relative;
-  }
-
-  .main-menu {
-    align-items: center;
-    display: flex;
-    height: $header-height;
-    justify-content: center;
-
-    .icon-container {
-      display: flex;
-      justify-content: space-between;
-      max-width: 200px;
-      width: 100%;
-
-      @include sm {
-        max-width: $header-icon-container-max-width;
-      }
-
-      button {
-        border-radius: $header-icon-border-radius;
-        border: 0;
-        background-color: transparent;
-        transition: $header-icon-button-trasition-time ease-in;
-        height: $header-icon-button-dimension;
-        width: $header-icon-button-dimension;
-        padding-top: $header-icon-button-padding;
-        padding-left: $header-icon-button-padding;
-
-        i {
-          color: $header-icon-background-color;
-          font-size: $header-icon-font-size;
-          transition: $header-icon-button-trasition-time ease-in;
-        }
-
-        &:hover {
-          background-color: $header-icon-background-color;
-
-          i {
-            color: $header-background-color;
-          }
-        }
-
-        &:focus {
-          outline: 0;
-        }
-
-        &.hide-on-desktop {
-          @include sm {
-            display: none;
-          }
-        }
-      }
-    }
   }
 }

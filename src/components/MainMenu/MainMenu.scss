@@ -1,0 +1,20 @@
+@import "./../../scss/variables";
+@import "./../../scss/mixins";
+
+.main-menu {
+  align-items: center;
+  display: flex;
+  height: $header-height;
+  justify-content: center;
+
+  .icon-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 200px;
+    width: 100%;
+
+    @include sm {
+      max-width: $header-icon-container-max-width;
+    }
+  }
+}

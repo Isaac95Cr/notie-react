@@ -10,15 +10,17 @@ $header-height: 80px;
 $header-z-index: 15;
 $header-background-color: #333333;
 $header-icon-background-color: #00AF33;
-$header-icon-border-radius: 25px;
 $header-icon-container-max-width: 140px;
-$header-icon-button-dimension: 40px;
-$header-icon-button-padding: 6px;
 $header-icon-font-size: 1.7rem;
-$header-icon-button-trasition-time: 0.12s;
 $header-user-photo-dimension: 48px;
 $header-user-photo-border-radius: 25px;
 $header-side-assets-center-offset: 15px;
+
+// Icon button variables
+$icon-button-dimension: 40px;
+$icon-button-padding: 6px;
+$icon-border-radius: 25px;
+$icon-button-trasition-time: 0.12s;
 
 // Main section variables
 $main-section-height: -webkit-calc(#{$app-height} - #{$header-height});
@@ -35,7 +37,7 @@ $header-user-photo-border-radius: 25px;
 // Aside variables
 $aside-notes-background-color: white;
 $aside-notes-icon-color: #00af33;
-$aside-notes-icon-color-hover: gray;    
+$aside-notes-icon-color-hover: gray;
 
 %side-assets {
     align-items: center;
@@ -75,8 +77,8 @@ $aside-notes-icon-color-hover: gray;
         float: none;
         margin: 15px 0;
     }
-    
-    .navbar-collapse.collapse.in { 
+
+    .navbar-collapse.collapse.in {
         display: block!important;
     }
     .collapsing {

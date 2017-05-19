@@ -1,38 +1,33 @@
 import React from 'react';
+import MenuIconButton from './../IconButton/MenuIconButton';
+import './MainMenu.scss';
 
-import IconButton from '../../components/IconButton/IconButton'
-
-const MainMenu = (props) => {
-  const iconList = [
+const MainMenu = ({ toggleAside }) => {
+  const buttonList = [
     {
-        iconClass:'fa fa-plus',
-        buttonClass:'hide-on-desktop'
+        iconName:'fa-plus',
+        isHiddenOnDesktop: true
     },
     {
-        iconClass:'fa fa-times',
-        buttonClass:'hide-on-desktop clear-editor-button'
+        iconName:'fa-times',
+        isHiddenOnDesktop: true
     },
     {
-        iconClass:'fa fa-sticky-note',
-        buttonClass:''
+        iconName:'fa-book'
     },
     {
-        iconClass:'fa fa-book',
-        buttonClass:''
+        iconName:'fa-tag'
     },
     {
-        iconClass:'fa fa-tag',
-        buttonClass:'',
-        onclick: props.toggleAside
+        iconName:'fa-sticky-note',
+        onClick: toggleAside
     }
   ];
-
   return (
     <div className="main-menu">
         <div className="icon-container">
-            {iconList.map((item,index) =>(
-                <IconButton key={index} classes = {item} />
-                //<IconButton key={index} iconClass = {x.iconClass} buttonClass = {x.buttonClass} />
+            {buttonList.map((button, index) => (
+              <MenuIconButton key={index} {...button} />
             ))}
         </div>
     </div>

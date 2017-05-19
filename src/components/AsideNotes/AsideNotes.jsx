@@ -4,17 +4,17 @@ import NavBarCollapse from '../../components/NavBarCollapse/NavBarCollapse';
 import NotesContainer from '../../components/NotesContainer/NotesContainer';
 import './AsideNotes.scss';
 
-const AsideNotes = (props) => {
+const AsideNotes = ({ isAsideVisible }) => {
   return (
-    <aside id="aside" className={'aside-notes container-fluid ' + (props.visible? 'active' : '') }>
+    <aside id="aside" className={`aside-notes container-fluid ${ (isAsideVisible ? 'active' : '') }`}>
       <NavBar />
       <div className="row">
           <div className="col-md-3">
             <NavBarCollapse />
           </div>
-            <div className="col-md-9 col-xs-12">   
-                <NotesContainer />
-            </div>
+          <div className="col-md-9 col-xs-12">
+              <NotesContainer />
+          </div>
         </div>
     </aside>
   )

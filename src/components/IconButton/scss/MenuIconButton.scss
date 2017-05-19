@@ -1,0 +1,17 @@
+@import "./../../../scss/variables";
+
+.icon-button {
+  i {
+    color: $header-icon-background-color;
+    font-size: $header-icon-font-size;
+    transition: $icon-button-trasition-time ease-in;
+  }
+
+  &:hover {
+    background-color: $header-icon-background-color;
+
+    i {
+      color: $header-background-color;
+    }
+  }
+}

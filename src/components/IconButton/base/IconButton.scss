@@ -1,0 +1,23 @@
+@import "./../../../scss/variables";
+@import "./../../../scss/mixins";
+
+.icon-button {
+  border-radius: $icon-border-radius;
+  border: 0;
+  background-color: transparent;
+  transition: $icon-button-trasition-time ease-in;
+  height: $icon-button-dimension;
+  width: $icon-button-dimension;
+  padding-top: $icon-button-padding;
+  padding-left: $icon-button-padding;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &.hide-on-desktop {
+    @include sm {
+      display: none;
+    }
+  }
+}
