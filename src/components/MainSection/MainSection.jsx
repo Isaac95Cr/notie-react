@@ -1,10 +1,10 @@
 import React from 'react';
 import AsideNotes from '../../components/AsideNotes/AsideNotes';
 
-const MainSection = () => {
+const MainSection = (props) => {
   return (
     <main>
-      <AsideNotes />
+      <AsideNotes visible = {props.visible}/>
     </main>
   );
 };

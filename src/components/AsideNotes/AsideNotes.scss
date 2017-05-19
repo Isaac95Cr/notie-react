@@ -5,102 +5,15 @@
     background-color: $aside-notes-background-color;
     height: $main-section-height;
     overflow: auto;
-    position: absolute;
-    //right: -100vw;
-    right: 0;
+    position: fixed;
+    right: -100vw;
+    //right: 0;
     top: 0px;
     transition: all 2s ;
-
-    .navbar-default{
-        background-color: transparent;
-        border-color: transparent;
-        button{
-            background: transparent;
-            border-color: transparent;
-            color: $aside-notes-icon-color;
-            &:hover{
-                color: $aside-notes-icon-color-hover;
-            }
-        }
-        .navbar-toggle{
-            border-color: transparent;
-            .icon-bar{
-                background-color: $aside-notes-icon-color;
-            }
-        }
-    }
-    .dashboard{
-            height: 500px;
-        .list{
-            margin-top: 2rem;
-                .list-content, .list-content{
-                    height: 200px;
-                    overflow: auto;
-                .list-item{
-                    background-color: white;
-                    border-bottom: 1px solid #ddd;
-                    border-radius: 2px;
-                    padding: 0.5rem;
-                    &:hover{
-                        background-color: $aside-notes-icon-color;
-                        cursor: pointer;
-                    }
-                }
-            }
-        }
-    }
-    .notes-container{
-        .note{
-            background-color: $aside-notes-icon-color-hover;
-            border-radius: 2px;
-            margin: 0.5rem;
-            padding: 0.5rem;
-        }
-    }   
 }
 
-.transform-active {
+.active {
     position: absolute;
     top: 0px;
     right: 0px;
 }
-  
-
-@media (max-width: 991px) {
-    .navbar-header {
-        float: none;
-    }
-    .navbar-toggle {
-        display: block;
-    }
-    .navbar-collapse {
-        border-top: 1px solid transparent;
-        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
-    }
-    .navbar-collapse.collapse {
-        display: none!important;
-    }
-    .navbar-nav {
-        float: none!important;
-        margin: 7.5px -15px;
-    }
-    .navbar-nav>li {
-        float: none;
-    }
-    .navbar-nav>li>a {
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-    .navbar-text {
-        float: none;
-        margin: 15px 0;
-    }
-    
-    .navbar-collapse.collapse.in { 
-        display: block!important;
-    }
-    .collapsing {
-        overflow: hidden!important;
-    }
-    
-} 

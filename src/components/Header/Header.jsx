@@ -16,7 +16,7 @@ class Header extends React.Component{
                         <Logo />
                     </div>
                     <div className="col-xs-8">
-                        <MainMenu />
+                        <MainMenu toggleAside = {this.props.toggleAside}/>
                     </div>
                     <div className="col-xs-2">
                         <User />

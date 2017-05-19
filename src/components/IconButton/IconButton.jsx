@@ -9,7 +9,7 @@ class IconButton extends React.Component{
     render(){
         const { classes } = this.props;
         return(
-            <button type="button" name="button" className={classes.buttonClass}>
+            <button type="button" name="button" onClick={classes.onclick} className={classes.buttonClass}>
                 <i className={`fa ${classes.iconClass}`} aria-hidden="true"></i>
             </button>
         )}

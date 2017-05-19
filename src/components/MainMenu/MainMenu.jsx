@@ -2,7 +2,7 @@ import React from 'react';
 
 import IconButton from '../../components/IconButton/IconButton'
 
-const MainMenu = () => {
+const MainMenu = (props) => {
   const iconList = [
     {
         iconClass:'fa fa-plus',
@@ -22,7 +22,8 @@ const MainMenu = () => {
     },
     {
         iconClass:'fa fa-tag',
-        buttonClass:''
+        buttonClass:'',
+        onclick: props.toggleAside
     }
   ];
 

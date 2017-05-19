@@ -1,0 +1,13 @@
+@import "./../../scss/variables";
+@import "./../../scss/mixins";
+
+.aside-notes {
+    .notes-container{
+        .note{
+            background-color: $aside-notes-icon-color-hover;
+            border-radius: 2px;
+            margin: 0.5rem;
+            padding: 0.5rem;
+        }
+    } 
+}
