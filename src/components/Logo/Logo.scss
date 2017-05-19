@@ -2,7 +2,7 @@
 @import "./../../scss/mixins";
 
 .logo-container {
-    //@extend %side-assets;
+    @extend %side-assets;
     right: $header-side-assets-center-offset;
 
     .logo {
