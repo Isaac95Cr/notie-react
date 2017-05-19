@@ -1,0 +1,16 @@
+@import "./../../scss/variables";
+
+.editor {
+  height: $main-section-height;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+
+  input, textarea {
+    width: 100%;
+  }
+
+  textarea {
+    height: 550px;
+  }
+}
