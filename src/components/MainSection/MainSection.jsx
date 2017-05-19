@@ -9,7 +9,7 @@ const MainSection = ({ visible }) => {
       <div className="panel-container">
         <EditorPanel />
         <AsideNotes visible = {visible}/>
-      <div/>
+      </div>
     </main>
   );
 };

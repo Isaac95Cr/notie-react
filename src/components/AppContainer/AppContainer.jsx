@@ -6,22 +6,21 @@ class AppContainer extends React.Component{
     constructor(props){
         super(props);
 
-        this.toggleAside = this.toggleAside.bind(this);
+        this.handleToggleAside = this.handleToggleAside.bind(this);
 
         this.state = {
             visible: false
         }
     }
 
-    toggleAside(){
-        this.setState(prev => ({visible: !prev.visible}) );
-        alert(this.state.visible);
+    handleToggleAside(){
+        this.setState(prev => ({ visible: !prev.visible }));
     }
 
     render(){
         return(
         <div className='app container-fluid'>
-            <Header toggleAside = {this.toggleAside} />
+            <Header toggleAside = {this.handleToggleAside} />
             <MainSection visible = {this.state.visible}/>
         </div>
         )
