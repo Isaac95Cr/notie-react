@@ -5,10 +5,11 @@ import User from '../../components/UserButton/UserButton'
 import MainMenu from '../../components/MainMenu/MainMenu'
 
 class Header extends React.Component{
-    constructor(props){
+    constructor(props) {
         super(props);
     };
-    render(){
+
+    render() {
         const { toggleAddPanel, toggleAside } = this.props;
         return(
             <header className="header-section container-fluid">

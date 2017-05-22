@@ -1,0 +1,10 @@
+@import "./../../scss/variables";
+
+.editor-panel {
+  .editor-tools-container {
+    height: $main-section-height;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

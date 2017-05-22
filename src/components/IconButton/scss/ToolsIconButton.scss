@@ -1,6 +1,6 @@
 @import "./../../../scss/variables";
 
-button.icon-button {
+button.icon-button.tools-icon-button {
   border: 1px solid $side-tools-icon-background-color;
 
   i {
@@ -13,7 +13,7 @@ button.icon-button {
     background-color: $side-tools-icon-background-color;
 
     i {
-      color: $side-tools-background-color;
+      color: white;
     }
   }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import IconButton from './base/IconButton';
-import './scss/'
+import './scss/ToolsIconButton.scss';
 
-const ToolsIconButton = (props) => <IconButton {...props}/>
+const ToolsIconButton = (props) => <IconButton {...props} customClass='tools-icon-button' />
 
 export default ToolsIconButton;
