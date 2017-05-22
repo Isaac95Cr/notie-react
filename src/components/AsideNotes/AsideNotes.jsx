@@ -6,17 +6,17 @@ import './AsideNotes.scss';
 
 const AsideNotes = ({ isAsideVisible }) => {
   return (
-    <aside id="aside" className={`aside-notes container-fluid ${ (isAsideVisible ? 'active' : '') }`}>
-      <NavBar />
-      <div className="row">
-          <div className="col-md-3">
-            <NavBarCollapse />
-          </div>
-          <div className="col-md-9 col-xs-12">
+    <div className='row'>
+      <div className={`aside-notes ${ (isAsideVisible ? 'active-right' : '') }`}>
+        <NavBar />
+            <div className="col-md-3">
+              <NavBarCollapse />
+            </div>
+            <div className="col-md-9 col-xs-12">
               <NotesContainer />
-          </div>
-        </div>
-    </aside>
+            </div>
+      </div>
+    </div>
   )
 }
 

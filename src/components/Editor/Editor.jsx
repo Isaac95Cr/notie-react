@@ -5,8 +5,8 @@ const Editor = () => {
   return (
     <div className='editor'>
       <div className='editor-inner'>
-        <input type='text'/>
-        <textarea />
+        <input type='text'placeholder='Hi :D!!'/>
+        <textarea placeholder='We are going to die '/>
       </div>
     </div>
   );

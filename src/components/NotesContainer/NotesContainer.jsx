@@ -14,8 +14,8 @@ const displayNotes = (notes) => {
 
 const NotesContainer = () => {
   return (
-    <div className="notes-container">
-        <div className="row">
+    <div className="row">
+        <div className="notes-container">
             {displayNotes(api.getAllNotes())}
         </div>
     </div>
