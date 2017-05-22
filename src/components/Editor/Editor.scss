@@ -6,11 +6,24 @@
   justify-content: flex-end;
   flex-direction: column;
 
-  input, textarea {
+  input {
     width: 100%;
+    border: none;
+    font-size: $main-section-note-title-font-size;
+    line-height: $main-section-note-title-line-height;
+    width: 100%;
+
+    &:focus{
+        outline: none;
+    }
   }
 
   textarea {
-    height: 550px;
+    border: none;
+    height: $main-section-note-content;
+    overflow: auto;
+    outline: none;
+    resize: none;
+    width: 100%;
   }
 }

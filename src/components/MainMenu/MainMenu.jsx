@@ -2,7 +2,7 @@ import React from 'react';
 import MenuIconButton from './../IconButton/MenuIconButton';
 import './MainMenu.scss';
 
-const MainMenu = ({ toggleAside }) => {
+const MainMenu = ({ toggleAside , toggleAddPanel}) => {
   const buttonList = [
     {
         iconName:'fa-plus',
@@ -13,7 +13,8 @@ const MainMenu = ({ toggleAside }) => {
         isHiddenOnDesktop: true
     },
     {
-        iconName:'fa-book'
+        iconName:'fa-book',
+        onClick: toggleAddPanel
     },
     {
         iconName:'fa-tag'

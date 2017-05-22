@@ -3,15 +3,14 @@
 .aside-notes {
     background-color: $aside-notes-background-color;
     height: $main-section-height;
-    overflow: auto;
     position: fixed;
     right: -100vw;
-    //right: 0;
-    top: 0px;
+    top: 0;
     transition: all 2s ;
+    width: 99%;
 }
 
-.active {
+.active-right{
     position: absolute;
     top: 0px;
     right: 0px;

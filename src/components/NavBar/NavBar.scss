@@ -1,23 +1,22 @@
 @import "./../../scss/variables";
 @import "./../../scss/mixins";
-
-.aside-notes {
-    .navbar-default{
-            background-color: transparent;
+.navbar-section{
+    .navbar,.navbar-default{
+        background-color: transparent;
+        border-color: transparent;
+        button{
+            background: transparent;
             border-color: transparent;
-            button{
-                background: transparent;
-                border-color: transparent;
-                color: $aside-notes-icon-color;
-                &:hover{
-                    color: $aside-notes-icon-color-hover;
-                }
+            color: $aside-notes-icon-color;
+            &:hover{
+                color: $aside-notes-icon-color-hover;
             }
-            .navbar-toggle{
-                border-color: transparent;
-                .icon-bar{
-                    background-color: $aside-notes-icon-color;
-                }
+        }
+        .navbar-toggle{
+            border-color: transparent;
+            .icon-bar{
+                background-color: $aside-notes-icon-color;
             }
+        }
     }
 }
