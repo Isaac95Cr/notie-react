@@ -1,0 +1,30 @@
+@import "./../../scss/variables";
+
+.slide-panel {
+  background-color: white;
+  height: $main-section-height;
+  position: fixed;
+  top:0;
+  transition: all 2s ;
+  width: 100%;
+
+  &.from-left {
+    left: -100vw;
+  }
+
+  &.from-right {
+    right: -100vw;
+  }
+
+  &.active-left {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+  }
+
+  &.active-right {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+  }
+}
