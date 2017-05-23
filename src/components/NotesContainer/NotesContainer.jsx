@@ -12,14 +12,32 @@ const displayNotes = (notes) => {
   });
 }
 
-const NotesContainer = () => {
-  return (
+class NotesContainer extends React.Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+      notes: []
+    };
+  }
+
+  componentDidMount() {
+      api.getAllNotes()
+      .then(response => {
+        const notes = response.data.notes;
+        this.setState({notes});
+      });
+  }
+
+  render(){
+    return (
     <div className="row">
         <div className="notes-container">
-            {displayNotes(api.getAllNotes())}
+            {displayNotes(this.state.notes)}
         </div>
     </div>
   );
-};
+  }
+}
 
 export default NotesContainer;
