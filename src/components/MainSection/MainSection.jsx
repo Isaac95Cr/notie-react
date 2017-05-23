@@ -10,7 +10,8 @@ const MainSection = ({ isAsideVisible, isAddPanelVisible }) => {
     <main className='main-section container-fluid'>
       <div className="panel-container">
         <EditorPanel />
-        <SlidePanel component={EditorPanel} direction={Directions.Left} isActive={isAddPanelVisible} />
+        <SlidePanel component={AddPanel} direction={Directions.Left} isActive={isAddPanelVisible} />
+        <SlidePanel component={AsideNotes} direction={Directions.Right} isActive={isAsideVisible} />
       </div>
     </main>
   );

@@ -1,11 +1,17 @@
 @import "./../../scss/variables";
 @import "./../../scss/mixins";
 
-.notes-container{
-    .note{
-        background-color: $aside-notes-icon-color-hover;
+.notes-container {
+    .note {
+        h4,
+        p {
+          color: #333;
+        }
+        background-color: white;
         border-radius: 2px;
-        padding: 0.5rem;
+        padding: 2rem;
         margin: 0.5rem;
+        height: 365px;
+        overflow: hidden;
     }
-} 
+}

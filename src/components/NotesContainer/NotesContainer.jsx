@@ -12,32 +12,14 @@ const displayNotes = (notes) => {
   });
 }
 
-class NotesContainer extends React.Component {
-
-  constructor(props){
-    super(props);
-    this.state = {
-      notes: []
-    };
-  }
-
-  componentDidMount() {
-      api.getAllNotes()
-      .then(response => {
-        const notes = response.data.notes;
-        this.setState({notes});
-      });
-  }
-
-  render(){
-    return (
+const NotesContainer = ({notes}) => {
+  return (
     <div className="row">
         <div className="notes-container">
-            {displayNotes(this.state.notes)}
+            {displayNotes(notes)}
         </div>
     </div>
-  );
-  }
+  )
 }
 
 export default NotesContainer;
