@@ -1,4 +1,5 @@
 import React from 'react';
+import './AddSearchList.scss';
 
 const renderItems = (items) => {
   return items.map((item, index) => {
@@ -14,10 +15,10 @@ const AddSearchList = ({header, searchPlaceholder, items}) => {
   return (
     <div className="add-search-list">
       <h3>{header}</h3>
-      <div className="sear">
+      <div className="search-list-input">
         <input type="text" placeholder={searchPlaceholder} />
       </div>
-      <div className="searched-list">
+      <div className="search-list">
         <ul>
           {renderItems(items)}
         </ul>
