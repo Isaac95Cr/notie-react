@@ -1,6 +1,5 @@
 import React from 'react';
 import Note from '../../components/Note/Note';
-import api from './../../../api/api';
 
 const displayNotes = (notes) => {
   return notes.map((note) => {
