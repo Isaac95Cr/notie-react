@@ -14,7 +14,7 @@ const NavBar = () => {
                     <span className="icon-bar"></span>
                 </button>
                     <button className="navbar-brand">
-                        <i className="fa fa-arrow-left" aria-hidden="true"></i>
+                        
                     </button>
                 </div>
             </div>
