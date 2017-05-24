@@ -1,10 +1,10 @@
 {
-  "profile":[ 
+  "profile":[
   {
-    "name": "db",
-    "user": "Morrisey",
+    "name": "Steven",
+    "lastName": "Morrisey",
     "id": "666",
-    "pic": "",
+    "pictureUrl": "https://pbs.twimg.com/profile_images/547081189123563520/XS7Otwwu.jpeg",
     "notebooks": [
       {
         "name": "songs",
@@ -76,5 +76,5 @@
       }
     ]
   }
- ] 
+ ]
 }

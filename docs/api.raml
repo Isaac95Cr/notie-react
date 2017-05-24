@@ -1,0 +1,185 @@
+#%RAML 1.0
+---
+title: Notie
+version: v1
+protocols: [ HTTP ]
+baseUri: http://notie.io/api/{version}
+mediaType: application/json
+types:
+  Tag:
+    type: object
+    properties:
+      id: string
+      name: string
+  Note:
+    type: object
+    properties:
+      id: string
+      title: string
+      text: string
+      tags: string[]
+      notebook: string
+  Notebook:
+    type: object
+    properties:
+      name: string
+      id: string
+      default?: boolean
+  User:
+    type: object
+    properties:
+      id: string
+      name: string
+      lastName: string
+      email: string
+      pictureUrl?: string
+      notebooks: Notebook[]
+/user:
+  get:
+    description: Request the user that matches the id
+    queryParameters:
+      id: string
+    responses:
+      200:
+        body:
+          type: User
+          example: |
+            {
+              "name": "John",
+              "lastName": "Doe",
+              "id": "12",
+              "pictureUrl": "https://www.fbi.gov/wanted/ecap/unknown-individual-4/johndoe30c.jpg",
+              "email": "john@doe.com"
+            }
+  post:
+    description: Create a new user
+    body:
+      type: User
+      example: |
+        {
+          "name": "John",
+          "lastName": "Doe",
+          "pictureUrl": "https://www.fbi.gov/wanted/ecap/unknown-individual-4/johndoe30c.jpg",
+          "email": "john@doe.com"
+        }
+    responses:
+      200:
+        body:
+          type: User
+          example: |
+            {
+              "name": "John",
+              "lastName": "Doe",
+              "id": "12",
+              "pictureUrl": "https://www.fbi.gov/wanted/ecap/unknown-individual-4/johndoe30c.jpg",
+              "email": "john@doe.com"
+            }
+  /{id}:
+    put:
+      description: Modify user
+      body:
+        type: User
+        example: |
+          {
+            "name": "John",
+            "lastName": "Doe",
+            "pictureUrl": "https://www.fbi.gov/wanted/ecap/unknown-individual-4/johndoe30c.jpg",
+            "email": "john@doe.com"
+          }
+      responses:
+        200:
+          body:
+            type: User
+            example: |
+              {
+                "name": "John",
+                "lastName": "Doe",
+                "id": "12",
+                "pictureUrl": "https://www.fbi.gov/wanted/ecap/unknown-individual-4/johndoe30c.jpg",
+                "email": "john@doe.com"
+              }
+    delete:
+      description: Make user unactive
+    /notebook:
+      get:
+        description: List all notebooks, if id query parameters provided list only the ones that match
+        queryParameters:
+          id?: string
+        responses:
+          200:
+            body:
+              type: Notebook
+              example: |
+                {
+                  "name": "Songs",
+                  "id": "4"
+                }
+      post:
+        description: Create new notebook
+        queryParameters:
+          name: string
+      /{id}:
+        put:
+          description: Modify notebook
+          queryParameters:
+            name: string
+        delete:
+          description: Delete notebook, if query provided delete notes too
+          queryParameters:
+            total?: boolean
+      /note:
+        get:
+          description: List all notes, if id query parameters provided list only the ones that match
+          queryParameters:
+            id?: string
+          responses:
+            200:
+              body:
+                type: Note
+                example: |
+                  {
+                    "title": "Songs",
+                    "text": "A text",
+                    "id": "4",
+                    "tags": ["2", "4"],
+                    "notebook": "1"
+                  }
+        post:
+          description: Create new note
+          queryParameters:
+            title: string
+            text: string
+        /{id}:
+          put:
+            description: Modify note
+            queryParameters:
+              title?: string
+              text?: string
+          delete:
+            description: Delete note
+      /tag:
+        get:
+          description: List all tags, if id query parameters provided list only the ones that match
+          queryParameters:
+            id?: string
+          responses:
+            200:
+              body:
+                type: Tag
+                example: |
+                  {
+                    "name": "Song",
+                    "id": "1"
+                  }
+        post:
+          description: Create new note
+          queryParameters:
+            title: string
+            text: string
+        /{id}:
+          put:
+            description: Modify tag
+            queryParameters:
+              name: string
+          delete:
+            description: Delete tag
