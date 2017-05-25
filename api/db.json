@@ -18,6 +18,26 @@
         "name": "personal",
         "id": "3",
         "deafult": true
+      },
+      {
+        "name": "myths",
+        "id": "4",
+        "deafult": true
+      },
+      {
+        "name": "weird stuff",
+        "id": "5",
+        "deafult": true
+      },
+      {
+        "name": "cool stuff",
+        "id": "6",
+        "deafult": true
+      },
+      {
+        "name": "me",
+        "id": "7",
+        "deafult": true
       }
     ],
     "tags": [

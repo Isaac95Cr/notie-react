@@ -6,8 +6,10 @@ import './AddPanel.scss';
 class AddPanel extends React.Component {
   constructor(props) {
     super(props);
+    this.handleOnSearch = this.handleOnSearch.bind(this);
     this.state = {
-      items: []
+      items: [],
+      originalItemList: []
     }
   }
 
@@ -15,8 +17,20 @@ class AddPanel extends React.Component {
     api.getAllNotes()
     .then(response => {
       const notebooks = response.data.notebooks;
-      this.setState({items: notebooks});
+      this.setState({
+        items: notebooks,
+        originalItemList: notebooks
+      });
     });
+  }
+
+  handleOnSearch(e) {
+    const { originalItemList } = this.state;
+    const criteria = e.target.value.toLowerCase();
+    const filteredItems = originalItemList.filter((item) => {
+      return item.name.toLowerCase().indexOf(criteria) >= 0;
+    });
+    this.setState({items: filteredItems});
   }
 
   render() {
@@ -26,7 +40,12 @@ class AddPanel extends React.Component {
           <div className="add-panel-container">
               <div className="col-xs-12">
                   <div className="add-panel">
-                    <AddSearchList header="Notebooks" searchPlaceholder="Look into your dreams..." items={items}/>
+                    <AddSearchList
+                      header="Notebooks"
+                      searchPlaceholder="Look into your dreams..."
+                      items={items}
+                      onSearch={this.handleOnSearch}
+                    />
                   </div>
               </div>
           </div>
