@@ -1,9 +1,11 @@
 require('dotenv').config();
+require('./models/Note');
 
 const express = require('express');
 const routes = require('./routes/routes');
 const app = express();
 const db = require('./db');
+const bodyParser = require('body-parser');
 const port =  process.env.DB_PORT;
 
 app.use((req,res,next)=>{
@@ -13,11 +15,11 @@ app.use((req,res,next)=>{
     next();
 });
 
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/api',routes);
 
 db(process.env.DB_CONNECTION_STRING);
 
-app.use('/api',routes);
 app.listen(port,() => {
     console.log("app is running at port " + port);
 });
