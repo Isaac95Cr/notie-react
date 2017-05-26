@@ -19,17 +19,17 @@ class AsideNotes extends React.Component {
     api.getAllNotes()
     .then(response => {
       const data = response.data;
-      this.setState(data);
+      this.setState({notes:data});
     });
     api.getAllNoteBooks()
     .then(response => {
       const data = response.data;
-      this.setState(data);
+      this.setState({notebooks:data});
     });
     api.getAllTags()
     .then(response => {
       const data = response.data;
-      this.setState(data);
+      this.setState({tags:data});
     });
   }
 
