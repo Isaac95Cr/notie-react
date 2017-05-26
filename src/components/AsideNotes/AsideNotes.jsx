@@ -21,6 +21,16 @@ class AsideNotes extends React.Component {
       const data = response.data;
       this.setState(data);
     });
+    api.getAllNoteBooks()
+    .then(response => {
+      const data = response.data;
+      this.setState(data);
+    });
+    api.getAllTags()
+    .then(response => {
+      const data = response.data;
+      this.setState(data);
+    });
   }
 
   render() {
