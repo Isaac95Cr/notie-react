@@ -5,6 +5,6 @@ const NoteBookSchema = mongoose.Schema({
     name: String
 });
 
-const NoteBookModel = mongoose.model('NoteBook',NoteBookSchema);
+const NoteBookModel = mongoose.model('Notebook',NoteBookSchema);
 
-module.exports = NoteBookModel; 
+module.exports = NoteBookModel;
