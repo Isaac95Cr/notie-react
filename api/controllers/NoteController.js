@@ -24,11 +24,12 @@ const update = (req, res) => {
   Note.findById(req.params.id, (err, note) => {
     if(err) {
       console.log(err);
+      res.status("404").send(err);
     } else {
       Object.assign(note, req.body)
       note.save((err, note) => {
         if(err) {
-          res.status(500).send(err)
+          res.status("500").send(err)
         }
         res.status("201")
         res.json(note)

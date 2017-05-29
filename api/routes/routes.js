@@ -1,7 +1,9 @@
 const express = require('express');
 const routes = express.Router();
-const Tag = require('./../models/Tag');
+const Tag =  require('./../controllers/TagController');
 const Note = require('./../controllers/NoteController');
+const Notebook = require('./../controllers/NoteBookController');
+
 
 routes.get('/',(req,res) =>{
     res.send("hello world");
@@ -9,12 +11,6 @@ routes.get('/',(req,res) =>{
 
 routes.get('/holi',(req,res) =>{
     res.json({"holi": "holi"});
-});
-
-routes.get('/mongo', (req, res) => {
-  Tag.find({}, (err, doc) => {
-    res.json(doc);
-  });
 });
 
 routes.get('/user/666',(req,res) =>{
@@ -28,73 +24,13 @@ routes.get('/user/666',(req,res) =>{
     );
 });
 
-routes.get('/notebooks',(req,res) =>{
-    res.json(
-        {
-        "notebooks":[
-            {
-            "name": "songs",
-            "id": "1"
-            },
-            {
-            "name": "stories",
-            "id": "2"
-            },
-            {
-            "name": "personal",
-            "id": "3",
-            "deafult": true
-            },
-            {
-            "name": "myths",
-            "id": "4",
-            "deafult": true
-            },
-            {
-            "name": "weird stuff",
-            "id": "5",
-            "deafult": true
-            },
-            {
-            "name": "cool stuff",
-            "id": "6",
-            "deafult": true
-            },
-            {
-            "name": "me",
-            "id": "7",
-            "deafult": true
-            }
-        ]
-        }
-    );
-});
+routes.get('/notebooks',Notebook.getAll);
+routes.post('/notebooks', Notebook.add);
+routes.put('/notebooks/:id', Notebook.update);
 
-routes.get('/tags',(req,res) =>{
-    res.json(
-    {
-      "tags": [
-        {
-        "name": "song",
-        "id": "1"
-        },
-        {
-        "name": "important",
-        "id": "2"
-        },
-        {
-        "name": "story",
-        "id": "3"
-        },
-        {
-        "name": "cool",
-        "id": "4"
-        }
-      ]
-    }
-    );
-});
-
+routes.get('/tags',Tag.getAll);
+routes.post('/tags', Tag.add);
+routes.put('/tags/:id', Tag.update);
 
 routes.get('/notes', Note.getAll);
 routes.post('/notes', Note.add);
