@@ -98,5 +98,6 @@ routes.get('/tags',(req,res) =>{
 
 routes.get('/notes', Note.getAll);
 routes.post('/notes', Note.add);
+routes.put('/notes/:id', Note.update);
 
 module.exports = routes;
