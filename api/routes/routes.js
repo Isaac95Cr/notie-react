@@ -2,6 +2,8 @@ const express = require('express');
 const routes = express.Router();
 const Tag = require('./../models/Tag');
 const Note = require('./../controllers/NoteController');
+const Notebooks = require('./../controllers/NoteBookController');
+
 
 routes.get('/',(req,res) =>{
     res.send("hello world");
@@ -28,47 +30,7 @@ routes.get('/user/666',(req,res) =>{
     );
 });
 
-routes.get('/notebooks',(req,res) =>{
-    res.json(
-        {
-        "notebooks":[
-            {
-            "name": "songs",
-            "id": "1"
-            },
-            {
-            "name": "stories",
-            "id": "2"
-            },
-            {
-            "name": "personal",
-            "id": "3",
-            "deafult": true
-            },
-            {
-            "name": "myths",
-            "id": "4",
-            "deafult": true
-            },
-            {
-            "name": "weird stuff",
-            "id": "5",
-            "deafult": true
-            },
-            {
-            "name": "cool stuff",
-            "id": "6",
-            "deafult": true
-            },
-            {
-            "name": "me",
-            "id": "7",
-            "deafult": true
-            }
-        ]
-        }
-    );
-});
+routes.get('/notebooks',Notebooks.getAll);
 
 routes.get('/tags',(req,res) =>{
     res.json(
