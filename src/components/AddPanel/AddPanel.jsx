@@ -16,7 +16,7 @@ class AddPanel extends React.Component {
   componentDidMount() {
     api.getAllNoteBooks()
     .then(response => {
-      const notebooks = response.data.notebooks;
+      const notebooks = response.data;
       this.setState({
         items: notebooks,
         originalItemList: notebooks

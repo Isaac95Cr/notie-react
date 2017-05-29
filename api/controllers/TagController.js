@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
-const NoteBook = mongoose.model('NoteBook');
+const Tag = mongoose.model('Tag');
 
 const getAll = (req,res)=>{
-    NoteBook.find().exec((err,data)=>{
+    Tag.find().exec((err,data)=>{
         res.json(data);
     });
 };
 
 const add = (req,res)=>{
-   const noteBook = new NoteBook(req.body);
-   noteBook.save((err,noteBook)=>{
+   const tag = new Tag(req.body);
+   tag.save((err,data)=>{
        if(err){
            res.status("422");
            res.send(err);
@@ -20,27 +20,27 @@ const add = (req,res)=>{
 };
 
 const update = (req,res)=>{
-    NoteBook.findById(req.params.id,(err, noteBook) => {
+    Tag.findById(req.params.id,(err, tag) => {
         if(err){
             console.log(err);
             res.status("404").send(err);
         }else{
-            Object.assign(noteBook, req.body)
-            noteBook.save((err, noteBook) => {
+            Object.assign(tag, req.body)
+            tag.save((err, tag) => {
                 if(err) {
                     res.status("500").send(err);
                 }
                 res.status("201");
-                res.json(noteBook);
+                res.json(tag);
             })
         }
-    });  
+    });
 };
 
-const NoteBooks = {
+const Tags = {
     getAll,
     add,
     update
 };
 
-module.exports = NoteBooks;
+module.exports = Tags;
