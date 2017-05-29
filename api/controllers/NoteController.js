@@ -8,8 +8,9 @@ const getAll = (req, res) => {
 }
 
 const add = (req, res) => {
+    console.log('\n\n\n\n', req.body, '\n\n\n\n');
     const newNote = new Note(req.body);
-    newNote.save((err, data)=>{
+    newNote.save((err, data) => {
         if(err){
             res.status("422");
             res.send(err);

@@ -4,7 +4,10 @@ const NoteSchema = mongoose.Schema({
   id: String,
   title: String,
   text: String,
-  notebook: String,
+  notebook: {
+    type: String,
+    required: true
+  },
   tags: Array
 });
 

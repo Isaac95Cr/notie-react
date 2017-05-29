@@ -1,12 +1,18 @@
 import React from 'react';
 import Editor from './../Editor/Editor';
 import EditorTools from './../EditorTools/EditorTools';
+import api from './../../../api/api';
 import './EditorPanel.scss';
 
 class EditorPanel extends React.Component {
   constructor(props) {
     super(props);
+    this.handleAddNote = this.handleAddNote.bind(this)
+    this.handleOnType = this.handleOnType.bind(this)
+    this.handleClearEditor = this.handleClearEditor.bind(this)
     this.state = {
+      editorText: '',
+      editorTitle: '',
       toolButtons: [
         { iconName: 'fa-plus', onClick: this.handleAddNote },
         { iconName: 'fa-times', onClick: this.handleClearEditor }
@@ -14,20 +20,34 @@ class EditorPanel extends React.Component {
     };
   }
 
+  handleOnType(note) {
+    this.setState({
+      editorText: note.text !== undefined ? note.text : this.state.editorText,
+      editorTitle: note.title !== undefined ? note.title : this.state.editorTitle
+    })
+  }
+
   handleAddNote() {
-    alert('Adding note!');
+    api.saveNote({
+      'title': this.state.editorTitle,
+      'text': this.state.editorText,
+      'notebook': '3',
+      'tags': []
+    }).catch((err) => {
+      console.log(err)
+    })
   }
 
   handleClearEditor() {
-    alert('Clear editor!');
-    // this.setState({
-    //   editorText: '',
-    //   editorTitle: ''
-    // });
+    this.setState({
+      editorText: '',
+      editorTitle: ''
+    });
   }
 
   render() {
-    const { toolButtons } = this.state;
+    const { toolButtons, editorText, editorTitle } = this.state;
+    const { handleOnType } = this;
     return (
       <section className = 'editor-panel row'>
         <div className='col-sm-2 hidden-col-xs'>
@@ -36,7 +56,7 @@ class EditorPanel extends React.Component {
           </div>
         </div>
         <div className='col-sm-8 col-xs-12'>
-          <Editor />
+          <Editor text={editorText} title={editorTitle} onType={handleOnType} />
         </div>
       </section>
     )
