@@ -1,6 +1,5 @@
 import React from 'react';
 import AddSearchList from './../AddSearchList/AddSearchList';
-import api from './../../../api/api';
 import './AddPanel.scss';
 
 class AddPanel extends React.Component {
@@ -12,15 +11,11 @@ class AddPanel extends React.Component {
       originalItemList: []
     }
   }
-
-  componentDidMount() {
-    api.getAllNoteBooks()
-    .then(response => {
-      const notebooks = response.data;
-      this.setState({
-        items: notebooks,
-        originalItemList: notebooks
-      });
+  
+  componentWillReceiveProps(props) {
+    this.setState({
+      items: this.props.notebooks,
+      originalItemList: this.props.notebooks
     });
   }
 

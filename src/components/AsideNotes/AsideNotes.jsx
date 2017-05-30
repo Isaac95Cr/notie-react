@@ -2,39 +2,9 @@ import React from 'react';
 import NavBar from '../../components/NavBar/NavBar';
 import NavBarCollapse from '../../components/NavBarCollapse/NavBarCollapse';
 import NotesContainer from '../../components/NotesContainer/NotesContainer';
-import api from './../../../api/api';
 import './AsideNotes.scss';
 
-class AsideNotes extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      notes: [],
-      notebooks: [],
-      tags: []
-    };
-  }
-
-  componentDidMount() {
-    api.getAllNotes()
-    .then(response => {
-      const data = response.data;
-      this.setState({notes:data});
-    });
-    api.getAllNoteBooks()
-    .then(response => {
-      const data = response.data;
-      this.setState({notebooks:data});
-    });
-    api.getAllTags()
-    .then(response => {
-      const data = response.data;
-      this.setState({tags:data});
-    });
-  }
-
-  render() {
-    const { notes, notebooks, tags } = this.state;
+const AsideNotes = ({notes, notebooks, tags })=> {
     return (
       <div className='row'>
         <div className="aside-notes">
@@ -47,8 +17,7 @@ class AsideNotes extends React.Component {
               </div>
         </div>
       </div>
-    )
-  }
+    );
 }
 
 export default AsideNotes;
