@@ -1,46 +1,39 @@
 const mongoose = require('mongoose');
 const Tag = mongoose.model('Tag');
+const { saveModel, removeModel, updateModel, sendJsonResponse, sendErrorResponse } = require('./../apiUtils');
+
 
 const getAll = (req,res)=>{
     Tag.find().exec((err,data)=>{
-        res.json(data);
+        sendJsonResponse(res, data);
     });
 };
 
 const add = (req,res)=>{
    const tag = new Tag(req.body);
-   tag.save((err,data)=>{
-       if(err){
-           res.status("422");
-           res.send(err);
-       }
-       res.status("201");
-       res.json(req.body);
-   });
+    saveModel(res, tag);
 };
 
 const update = (req,res)=>{
-    Tag.findById(req.params.id,(err, tag) => {
-        if(err){
-            console.log(err);
-            res.status("404").send(err);
-        }else{
-            Object.assign(tag, req.body)
-            tag.save((err, tag) => {
-                if(err) {
-                    res.status("500").send(err);
-                }
-                res.status("201");
-                res.json(tag);
-            })
-        }
+    const { params, body } = req;
+    Tag.findById(params.id,(err, tag) => {
+        err ? sendErrorResponse(res, err) : updateModel(res, tag, body)
+    })
+};
+
+const del = (req,res)=>{
+    const { params, body } = req;
+    Tag.findById(params.id,(err, tag) => {
+        err ? sendErrorResponse(res, err) : removeModel(res, tag, body);
     });
 };
+
 
 const Tags = {
     getAll,
     add,
-    update
+    update,
+    del
 };
 
 module.exports = Tags;
