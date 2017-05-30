@@ -50,12 +50,12 @@ class EditorPanel extends React.Component {
     const { handleOnType } = this;
     return (
       <section className = 'editor-panel row'>
-        <div className='col-sm-2 hidden-xs'>
+        <div className='col-xs-2'>
           <div className='editor-tools-container'>
             <EditorTools buttons={toolButtons} />
           </div>
         </div>
-        <div className='col-sm-8 col-xs-12'>
+        <div className='col-xs-8'>
           <Editor text={editorText} title={editorTitle} onType={handleOnType} />
         </div>
       </section>
