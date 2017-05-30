@@ -2,6 +2,7 @@ require('dotenv').config();
 require('./models/Note');
 require('./models/Notebook');
 require('./models/Tag');
+require('./models/User');
 
 const express = require('express');
 const routes = require('./routes/routes');

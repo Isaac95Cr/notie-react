@@ -3,7 +3,7 @@ const routes = express.Router();
 const Tag =  require('./../controllers/TagController');
 const Note = require('./../controllers/NoteController');
 const Notebook = require('./../controllers/NoteBookController');
-
+const User = require('./../controllers/UserController');
 
 routes.get('/',(req,res) =>{
     res.send("hello world");
@@ -24,16 +24,22 @@ routes.get('/user/666',(req,res) =>{
     );
 });
 
+routes.get('/users',User.getAll);
+
 routes.get('/notebooks',Notebook.getAll);
 routes.post('/notebooks', Notebook.add);
 routes.put('/notebooks/:id', Notebook.update);
+routes.delete('/notebooks/:id', Notebook.del);
 
 routes.get('/tags',Tag.getAll);
 routes.post('/tags', Tag.add);
 routes.put('/tags/:id', Tag.update);
+routes.delete('/tags/:id', Tag.del);
 
 routes.get('/notes', Note.getAll);
 routes.post('/notes', Note.add);
 routes.put('/notes/:id', Note.update);
+//routes.delete('/notes/:id', Note.del);
+
 
 module.exports = routes;

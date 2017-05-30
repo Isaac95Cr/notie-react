@@ -37,10 +37,29 @@ const update = (req,res)=>{
     });  
 };
 
+const del = (req,res)=>{
+    NoteBook.findById(req.params.id,(err, noteBook) => {
+        if(err){
+            console.log(err);
+            res.status("404").send(err);
+        }else{
+            Object.assign(noteBook, req.body)
+            noteBook.remove((err, noteBook) => {
+                if(err) {
+                    res.status("500").send(err);
+                }
+                res.status("200");
+                res.send();
+            })
+        }
+    });  
+};
+
 const NoteBooks = {
     getAll,
     add,
-    update
+    update,
+    del
 };
 
 module.exports = NoteBooks;

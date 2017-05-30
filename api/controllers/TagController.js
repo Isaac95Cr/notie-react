@@ -37,10 +37,30 @@ const update = (req,res)=>{
     });
 };
 
+const del = (req,res)=>{
+    Tag.findById(req.params.id,(err, tag) => {
+        if(err){
+            console.log(err);
+            res.status("404").send(err);
+        }else{
+            Object.assign(tag, req.body)
+            tag.remove((err, tag) => {
+                if(err) {
+                    res.status("500").send(err);
+                }
+                res.status("200");
+                res.send();
+            })
+        }
+    });
+};
+
+
 const Tags = {
     getAll,
     add,
-    update
+    update,
+    del
 };
 
 module.exports = Tags;
