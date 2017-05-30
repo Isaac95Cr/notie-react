@@ -15,14 +15,23 @@ const saveModel = (res, model) => {
   });
 }
 
+const removeModel = (res, model) => {
+  model.remove((err, data) => {
+    if(err) sendErrorResponse(res, err, '500');
+    sendJsonResponse(res, data, '200');
+  });
+}
+
 const updateModel = (res, model, newData) => {
   Object.assign(model, newData);
   saveModel(res, model);
 }
 
+
 module.exports = {
   sendJsonResponse,
   sendErrorResponse,
   saveModel,
+  removeModel,
   updateModel
 }
