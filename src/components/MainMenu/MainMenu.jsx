@@ -5,14 +5,6 @@ import './MainMenu.scss';
 const MainMenu = ({ toggleAside , toggleAddPanel}) => {
   const buttonList = [
     {
-        iconName:'fa-plus',
-        isHiddenOnDesktop: true
-    },
-    {
-        iconName:'fa-times',
-        isHiddenOnDesktop: true
-    },
-    {
         iconName:'fa-book',
         onClick: toggleAddPanel
     },
