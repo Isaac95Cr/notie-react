@@ -1,41 +1,24 @@
 const mongoose = require('mongoose');
 const Note = mongoose.model('Note');
+const { saveModel, updateModel, sendJsonResponse, sendErrorResponse } = require('./../apiUtils');
 
 const getAll = (req, res) => {
-    Note.find().exec((err,data)=>{
-        res.json(data);
-    });
+  Note.find().exec((err,data)=>{
+      sendJsonResponse(res, data);
+  });
 }
 
 const add = (req, res) => {
-    console.log('\n\n\n\n', req.body, '\n\n\n\n');
-    const newNote = new Note(req.body);
-    newNote.save((err, data) => {
-        if(err){
-            res.status("422");
-            res.send(err);
-        }
-        res.status("201");
-        res.json(req.body);
-    });
+  const newNote = new Note(req.body);
+  saveModel(res, newNote);
 }
 
 const update = (req, res) => {
-  Note.findById(req.params.id, (err, note) => {
-    if(err) {
-      console.log(err);
-      res.status("404").send(err);
-    } else {
-      Object.assign(note, req.body)
-      note.save((err, note) => {
-        if(err) {
-          res.status("500").send(err)
-        }
-        res.status("201")
-        res.json(note)
-      })
-    }
-  })
+  const { params, body } = req;
+  Note.findById(
+    params.id,
+    (err, note) => err ? sendErrorResponse(res, err) : updateModel(res, note, body)
+  )
 }
 
 const Notes = {
