@@ -50,7 +50,7 @@ class EditorPanel extends React.Component {
     const { handleOnType } = this;
     return (
       <section className = 'editor-panel row'>
-        <div className='col-sm-2 hidden-col-xs'>
+        <div className='col-sm-2 hidden-xs'>
           <div className='editor-tools-container'>
             <EditorTools buttons={toolButtons} />
           </div>
