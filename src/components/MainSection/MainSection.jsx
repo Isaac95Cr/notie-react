@@ -2,26 +2,27 @@ import React from 'react';
 import EditorPanel from './../EditorPanel/EditorPanel';
 import AsideNotes from './../AsideNotes/AsideNotes';
 import AddPanel from './../AddPanel/AddPanel';
-import { SlidePanel, Directions } from './../SlidePanel/SlidePanel';
+import { SlidePanel, Directions, Panels } from './../SlidePanel/SlidePanel';
 import './MainSection.scss'
 
-const MainSection = ({ isAsideVisible, isAddTagsVisible, isAddNoteBooksVisible, notes, notebooks, tags }) => {
-  const { Right, Left } = Directions
-  return (
-    <main className='main-section'>
-      <div className="panel-container container-fluid">
-        <EditorPanel />
-        <SlidePanel direction={Left} isActive={isAddNoteBooksVisible} >
-          <AddPanel items={notebooks}  header={"Notebooks"}/>
-        </SlidePanel>
-        <SlidePanel direction={Left} isActive={isAddTagsVisible} >
-          <AddPanel items={tags} header={"Tags"}/>
-        </SlidePanel>
-        <SlidePanel direction={Right} isActive={isAsideVisible} >
-          <AsideNotes notes={notes} notebooks={notebooks} tags={tags}/>
-        </SlidePanel>
-      </div>
-    </main>
+const MainSection = ({ visiblePanel, notes, notebooks, tags })=>{
+    const { Right, Left } = Directions;
+    const { Notebooks , Tags , Notes } = Panels;
+    return (
+      <main className='main-section'>
+        <div className="panel-container container-fluid">
+          <EditorPanel />
+          <SlidePanel direction={Left} visiblePanel={visiblePanel} panel={Panels.Notebooks}>
+            <AddPanel items={notebooks}  header={"Notebooks"}/>
+          </SlidePanel>
+          <SlidePanel direction={Left} visiblePanel={visiblePanel} panel={Panels.Tags}>
+            <AddPanel items={tags} header={"Tags"}/>
+          </SlidePanel>
+          <SlidePanel direction={Right} visiblePanel={visiblePanel} panel={Panels.Notes}>
+            <AsideNotes notes={notes} notebooks={notebooks} tags={tags}/>
+          </SlidePanel>
+        </div>
+      </main>
   );
 }
 

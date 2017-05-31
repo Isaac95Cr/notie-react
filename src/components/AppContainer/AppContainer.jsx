@@ -6,36 +6,32 @@ import api from './../../../api/api';
 class AppContainer extends React.Component {
     constructor(props) {
         super(props);
-        this.handleToggleAside = this.handleToggleAside.bind(this);
-        this.handleToggleAddNotebooks = this.handleToggleAddNotebooks.bind(this);
-        this.handleToggleAddTags = this.handleToggleAddTags.bind(this);
+        this.handleToggleSlidePanel = this.handleToggleSlidePanel.bind(this);
         this.state = {
-            isAsideVisible: false,
-            isAddNoteBooksVisible: false,
-            isAddTagsVisible: false,
+            visiblePanel: "",
             notes : [],
             originalNoteList: [],
             notebooks : [],
-            tags : []
+            originalNotebookList: [],
+            tags : [],
+            originalTagList: []
         }
     }
 
     componentDidMount() {
         api.getAllNotes().then(res => this.setState({ notes: res.data, originalNoteList: res.data }));
-        api.getAllNoteBooks().then(res => this.setState({ notebooks: res.data }));
-        api.getAllTags().then(res => this.setState({ tags: res.data }));
+        api.getAllNoteBooks().then(res => this.setState({ notebooks: res.data, originalNotebookList: res.data }));
+        api.getAllTags().then(res => this.setState({ tags: res.data, originalTagList: res.data }));
     }
 
-    handleToggleAside() {
-        this.setState(({ isAsideVisible }) => ({ isAsideVisible: !isAsideVisible }));
-    }
-
-    handleToggleAddNotebooks(){
-        this.setState(({ isAddNoteBooksVisible }) => ({isAddNoteBooksVisible: !isAddNoteBooksVisible }));
-    }
-
-    handleToggleAddTags(){
-        this.setState(({ isAddTagsVisible }) => ({isAddTagsVisible: !isAddTagsVisible }));
+    handleToggleSlidePanel(event) {
+        if(event.currentTarget.nodeName == "BUTTON"){
+            event.stopPropagation();
+            const panel = event.currentTarget.id;
+            panel !== this.state.visiblePanel ?
+            this.setState(({visiblePanel:panel})) :
+            this.setState(({visiblePanel:""}));
+        }
     }
 
     handleOnNoteSearch(e) {
@@ -44,22 +40,16 @@ class AppContainer extends React.Component {
     }
 
     render() {
-      const { handleToggleAside, handleToggleAddNotebooks, handleToggleAddTags, state } = this;
-      const { isAsideVisible, isAddTagsVisible, isAddNoteBooksVisible, notes, notebooks, tags} = state;
+      const { handleToggleSlidePanel, state } = this;
+      const { visiblePanel, notes, notebooks, tags} = state;
       return (
         <div className='app container-fluid'>
-            <Header
-              toggleAddTags={handleToggleAddTags}
-              toggleAddNotebooks = {handleToggleAddNotebooks}
-              toggleAside = {handleToggleAside}
-            />
+            <Header toggleSlidePanel = {handleToggleSlidePanel} />
             <MainSection
-              isAsideVisible = {isAsideVisible}
-              isAddNoteBooksVisible = {isAddNoteBooksVisible}
-              isAddTagsVisible = {isAddTagsVisible}
               notes={notes}
               notebooks={notebooks}
               tags={tags}
+              visiblePanel = {visiblePanel}
             />
         </div>
       )
