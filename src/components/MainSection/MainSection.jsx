@@ -10,9 +10,15 @@ const MainSection = ({ isAsideVisible, isAddTagsVisible, isAddNoteBooksVisible,n
       <main className='main-section'>
         <div className="panel-container container-fluid">
           <EditorPanel />
-          <SlidePanel component={(notebooks) => <AddPanel items={notebooks}  header={"Notebooks"}/> } direction={Directions.Left} isActive={isAddNoteBooksVisible} />
-          <SlidePanel component={() => <AddPanel items={tags} header={"Tags"}/> } direction={Directions.Left} isActive={isAddTagsVisible} />
-          <SlidePanel component={() => <AsideNotes notes={notes} notebooks={notebooks} tags={tags}/>} direction={Directions.Right} isActive={isAsideVisible} />
+          <SlidePanel direction={Directions.Left} isActive={isAddNoteBooksVisible} >
+            <AddPanel items={notebooks}  header={"Notebooks"}/>
+          </SlidePanel>
+          <SlidePanel direction={Directions.Left} isActive={isAddTagsVisible} >
+            <AddPanel items={tags} header={"Tags"}/>
+          </SlidePanel>
+          <SlidePanel direction={Directions.Right} isActive={isAsideVisible} >
+            <AsideNotes notes={notes} notebooks={notebooks} tags={tags}/>
+          </SlidePanel>
         </div>
       </main>
   );

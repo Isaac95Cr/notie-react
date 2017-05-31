@@ -8,11 +8,10 @@ export const Directions = {
   Down: 'down'
 }
 
-export const SlidePanel = ({ component, direction, isActive}) => {
-  const Component = component;
+export const SlidePanel = ({ direction, isActive, children }) => {
   return (
     <div className={`container-fluid slide-panel from-${direction} ${isActive ? `active-${direction}` : ''}`} >
-      <Component />
+      {children}
     </div>
   );
 }

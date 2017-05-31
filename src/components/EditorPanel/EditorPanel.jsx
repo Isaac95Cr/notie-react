@@ -33,6 +33,8 @@ class EditorPanel extends React.Component {
       'text': this.state.editorText,
       'notebook': '3',
       'tags': []
+    }).then((res) => {
+      console.log(res);
     }).catch((err) => {
       console.log(err)
     })
