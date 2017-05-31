@@ -9,7 +9,7 @@ class AppContainer extends React.Component {
         this.handleToggleAside = this.handleToggleAside.bind(this);
         this.handleToggleAddNotebooks = this.handleToggleAddNotebooks.bind(this);
         this.handleToggleAddTags = this.handleToggleAddTags.bind(this);
-        this.state = { 
+        this.state = {
             isAsideVisible: false,
             isAddNoteBooksVisible: false,
             isAddTagsVisible: false,
@@ -20,21 +20,9 @@ class AppContainer extends React.Component {
     }
 
     componentDidMount() {
-        api.getAllNotes()
-        .then(response => {
-        const data = response.data;
-        this.setState({notes:data});
-        });
-        api.getAllNoteBooks()
-        .then(response => {
-        const data = response.data;
-        this.setState({notebooks:data});
-        });
-        api.getAllTags()
-        .then(response => {
-        const data = response.data;
-        this.setState({tags:data});
-        });
+        api.getAllNotes().then(res => this.setState({ notes: res.data }));
+        api.getAllNoteBooks().then(res => this.setState({ notebooks: res.data }));
+        api.getAllTags().then(res => this.setState({ tags: res.data }));
     }
 
     handleToggleAside() {
@@ -50,18 +38,23 @@ class AppContainer extends React.Component {
     }
 
     render() {
-      const { handleToggleAside,handleToggleAddNotebooks, handleToggleAddTags, state } = this;
+      const { handleToggleAside, handleToggleAddNotebooks, handleToggleAddTags, state } = this;
       const { isAsideVisible, isAddTagsVisible, isAddNoteBooksVisible, notes, notebooks, tags} = state;
       return (
         <div className='app container-fluid'>
-            <Header toggleAddTags={handleToggleAddTags} toggleAddNotebooks = {handleToggleAddNotebooks} toggleAside = {handleToggleAside} />
-            <MainSection 
-            isAsideVisible = {isAsideVisible} 
-            isAddNoteBooksVisible = {isAddNoteBooksVisible}
-            isAddTagsVisible = {isAddTagsVisible} 
-            notes={notes} 
-            notebooks={notebooks} 
-            tags={tags}/>
+            <Header
+              toggleAddTags={handleToggleAddTags}
+              toggleAddNotebooks = {handleToggleAddNotebooks}
+              toggleAside = {handleToggleAside}
+            />
+            <MainSection
+              isAsideVisible = {isAsideVisible}
+              isAddNoteBooksVisible = {isAddNoteBooksVisible}
+              isAddTagsVisible = {isAddTagsVisible}
+              notes={notes}
+              notebooks={notebooks}
+              tags={tags}
+            />
         </div>
       )
     }
