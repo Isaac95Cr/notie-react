@@ -14,13 +14,14 @@ class AppContainer extends React.Component {
             isAddNoteBooksVisible: false,
             isAddTagsVisible: false,
             notes : [],
+            originalNoteList: [],
             notebooks : [],
             tags : []
         }
     }
 
     componentDidMount() {
-        api.getAllNotes().then(res => this.setState({ notes: res.data }));
+        api.getAllNotes().then(res => this.setState({ notes: res.data, originalNoteList: res.data }));
         api.getAllNoteBooks().then(res => this.setState({ notebooks: res.data }));
         api.getAllTags().then(res => this.setState({ tags: res.data }));
     }
@@ -35,6 +36,11 @@ class AppContainer extends React.Component {
 
     handleToggleAddTags(){
         this.setState(({ isAddTagsVisible }) => ({isAddTagsVisible: !isAddTagsVisible }));
+    }
+
+    handleOnNoteSearch(e) {
+      const query = e.target.value;
+      // TODO: Handle the note search
     }
 
     render() {

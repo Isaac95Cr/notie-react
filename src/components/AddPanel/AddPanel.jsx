@@ -11,7 +11,7 @@ class AddPanel extends React.Component {
       originalItemList: []
     }
   }
-  
+
   componentWillReceiveProps(props) {
     this.setState({
       items: this.props.items,
@@ -22,7 +22,7 @@ class AddPanel extends React.Component {
   handleOnSearch(e) {
     const { originalItemList } = this.state;
     const criteria = e.target.value.toLowerCase();
-    const filteredItems = originalItemList.filter((item) => {
+    const filteredItems = originalItemList.filter(item => {
       return item.name.toLowerCase().indexOf(criteria) >= 0;
     });
     this.setState({items: filteredItems});
