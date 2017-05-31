@@ -1,16 +1,16 @@
 @import "./../../scss/variables";
 
-.add-panel-container {
+.property-view-container {
 
   background-color: white;
   height: $main-section-height;
   width: 100%;
 
-  .add-panel {
+  .property-view {
     margin: 70px auto 0;
     max-width: 250px;
 
-    .add-search-list {
+    .property-search-list {
       input {
         width: 100%;
         border: 0;

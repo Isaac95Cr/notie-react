@@ -1,14 +1,14 @@
 import React from 'react';
-import AddSearchList from './../AddSearchList/AddSearchList';
-import './AddPanel.scss';
+import PropertySearchList from './../PropertySearchList/PropertySearchList';
+import './PropertyView.scss';
 
 const AddPanel = ({ header, items, onSearch }) => {
   return (
     <div className="row">
-      <div className="add-panel-container">
+      <div className="property-view-container">
         <div className="col-xs-12">
-          <div className="add-panel">
-            <AddSearchList
+          <div className="property-view">
+            <PropertySearchList
               header={header}
               searchPlaceholder="Look into your dreams..."
               items={items}

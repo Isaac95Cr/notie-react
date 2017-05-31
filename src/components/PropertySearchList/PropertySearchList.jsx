@@ -1,5 +1,5 @@
 import React from 'react';
-import './AddSearchList.scss';
+import './PropertySearchList.scss';
 
 const renderItems = (items) => {
   return items.map((item, index) => {
@@ -13,7 +13,7 @@ const renderItems = (items) => {
 
 const AddSearchList = ({header, searchPlaceholder, items, onSearch}) => {
   return (
-    <div className="add-search-list">
+    <div className="property-search-list">
       <h3>{header}</h3>
       <div className="search-list-input">
         <input type="text" placeholder={searchPlaceholder} onChange={onSearch}/>
