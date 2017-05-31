@@ -10,7 +10,7 @@ class Header extends React.Component{
     };
 
     render() {
-        const { toggleAddPanel, toggleAside } = this.props;
+        const { toggleAddNotebooks, toggleAddTags, toggleAside } = this.props;
         return(
             <header className="header-section container-fluid">
                 <div className="row">
@@ -18,7 +18,9 @@ class Header extends React.Component{
                         <Logo />
                     </div>
                     <div className="col-xs-8">
-                        <MainMenu toggleAside = { toggleAside } toggleAddPanel = { toggleAddPanel } />
+                        <MainMenu toggleAside = { toggleAside } 
+                        toggleAddTags = { toggleAddTags }  
+                        toggleAddNotebooks = { toggleAddNotebooks }/>
                     </div>
                     <div className="col-xs-2">
                         <User />

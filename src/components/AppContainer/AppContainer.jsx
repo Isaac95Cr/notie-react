@@ -7,11 +7,12 @@ class AppContainer extends React.Component {
     constructor(props) {
         super(props);
         this.handleToggleAside = this.handleToggleAside.bind(this);
-        this.handleToggleAddPanel = this.handleToggleAddPanel.bind(this);
-        
+        this.handleToggleAddNotebooks = this.handleToggleAddNotebooks.bind(this);
+        this.handleToggleAddTags = this.handleToggleAddTags.bind(this);
         this.state = { 
             isAsideVisible: false,
-            isAddPanelVisible: false,
+            isAddNoteBooksVisible: false,
+            isAddTagsVisible: false,
             notes : [],
             notebooks : [],
             tags : []
@@ -40,19 +41,24 @@ class AppContainer extends React.Component {
         this.setState(({ isAsideVisible }) => ({ isAsideVisible: !isAsideVisible }));
     }
 
-    handleToggleAddPanel(){
-        this.setState(({ isAddPanelVisible }) => ({isAddPanelVisible: !isAddPanelVisible }));
+    handleToggleAddNotebooks(){
+        this.setState(({ isAddNoteBooksVisible }) => ({isAddNoteBooksVisible: !isAddNoteBooksVisible }));
+    }
+
+    handleToggleAddTags(){
+        this.setState(({ isAddTagsVisible }) => ({isAddTagsVisible: !isAddTagsVisible }));
     }
 
     render() {
-      const { handleToggleAside,handleToggleAddPanel, state } = this;
-      const { isAsideVisible, isAddPanelVisible, notes, notebooks, tags} = state;
+      const { handleToggleAside,handleToggleAddNotebooks, handleToggleAddTags, state } = this;
+      const { isAsideVisible, isAddTagsVisible, isAddNoteBooksVisible, notes, notebooks, tags} = state;
       return (
         <div className='app container-fluid'>
-            <Header toggleAddPanel = {handleToggleAddPanel} toggleAside = {handleToggleAside} />
+            <Header toggleAddTags={handleToggleAddTags} toggleAddNotebooks = {handleToggleAddNotebooks} toggleAside = {handleToggleAside} />
             <MainSection 
             isAsideVisible = {isAsideVisible} 
-            isAddPanelVisible = {isAddPanelVisible} 
+            isAddNoteBooksVisible = {isAddNoteBooksVisible}
+            isAddTagsVisible = {isAddTagsVisible} 
             notes={notes} 
             notebooks={notebooks} 
             tags={tags}/>

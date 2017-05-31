@@ -14,8 +14,8 @@ class AddPanel extends React.Component {
   
   componentWillReceiveProps(props) {
     this.setState({
-      items: this.props.notebooks,
-      originalItemList: this.props.notebooks
+      items: this.props.items,
+      originalItemList: this.props.items
     });
   }
 
@@ -30,13 +30,14 @@ class AddPanel extends React.Component {
 
   render() {
     const { items } = this.state;
+    const { header } = this.props;
     return (
       <div className="row">
           <div className="add-panel-container">
               <div className="col-xs-12">
                   <div className="add-panel">
                     <AddSearchList
-                      header="Notebooks"
+                      header={header}
                       searchPlaceholder="Look into your dreams..."
                       items={items}
                       onSearch={this.handleOnSearch}

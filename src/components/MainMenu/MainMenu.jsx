@@ -2,14 +2,15 @@ import React from 'react';
 import MenuIconButton from './../IconButton/MenuIconButton';
 import './MainMenu.scss';
 
-const MainMenu = ({ toggleAside , toggleAddPanel}) => {
+const MainMenu = ({ toggleAside , toggleAddTags, toggleAddNotebooks}) => {
   const buttonList = [
     {
         iconName:'fa-book',
-        onClick: toggleAddPanel
+        onClick: toggleAddNotebooks
     },
     {
-        iconName:'fa-tag'
+        iconName:'fa-tag',
+        onClick: toggleAddTags
     },
     {
         iconName:'fa-sticky-note',
