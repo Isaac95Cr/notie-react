@@ -6,17 +6,19 @@ import { SlidePanel, Directions, Panels } from './../SlidePanel/SlidePanel';
 import './MainSection.scss'
 
 const MainSection = ({ visiblePanel, notes, notebooks, tags })=>{
+    const { Right, Left } = Directions;
+    const { Notebooks , Tags , Notes } = Panels;
     return (
       <main className='main-section'>
         <div className="panel-container container-fluid">
           <EditorPanel />
-          <SlidePanel direction={Directions.Left} visiblePanel={visiblePanel} panel={Panels.Notebooks}>
+          <SlidePanel direction={Left} visiblePanel={visiblePanel} panel={Panels.Notebooks}>
             <AddPanel items={notebooks}  header={"Notebooks"}/>
           </SlidePanel>
-          <SlidePanel direction={Directions.Left} visiblePanel={visiblePanel} panel={Panels.Tags}>
+          <SlidePanel direction={Left} visiblePanel={visiblePanel} panel={Panels.Tags}>
             <AddPanel items={tags} header={"Tags"}/>
           </SlidePanel>
-          <SlidePanel direction={Directions.Right} visiblePanel={visiblePanel} panel={Panels.Notes}>
+          <SlidePanel direction={Right} visiblePanel={visiblePanel} panel={Panels.Notes}>
             <AsideNotes notes={notes} notebooks={notebooks} tags={tags}/>
           </SlidePanel>
         </div>
