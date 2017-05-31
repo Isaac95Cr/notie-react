@@ -7,12 +7,9 @@ class AppContainer extends React.Component {
     constructor(props) {
         super(props);
         this.handleToggleAside = this.handleToggleAside.bind(this);
-        this.handleToggleAddNotebooks = this.handleToggleAddNotebooks.bind(this);
-        this.handleToggleAddTags = this.handleToggleAddTags.bind(this);
+
         this.state = { 
-            isAsideVisible: false,
-            isAddNoteBooksVisible: false,
-            isAddTagsVisible: false,
+            visiblePanel: "",
             notes : [],
             notebooks : [],
             tags : []
@@ -37,21 +34,19 @@ class AppContainer extends React.Component {
         });
     }
 
-    handleToggleAside() {
-        this.setState(({ isAsideVisible }) => ({ isAsideVisible: !isAsideVisible }));
-    }
-
-    handleToggleAddNotebooks(){
-        this.setState(({ isAddNoteBooksVisible }) => ({isAddNoteBooksVisible: !isAddNoteBooksVisible }));
-    }
-
-    handleToggleAddTags(){
-        this.setState(({ isAddTagsVisible }) => ({isAddTagsVisible: !isAddTagsVisible }));
+    handleToggleAside(event) {
+        if(event.currentTarget.nodeName == "BUTTON"){
+            event.stopPropagation();
+            const panel = event.currentTarget.id;
+            panel !== this.state.visiblePanel ? 
+            this.setState(({visiblePanel:panel})) :
+            this.setState(({visiblePanel:""}));
+        }
     }
 
     render() {
       const { handleToggleAside,handleToggleAddNotebooks, handleToggleAddTags, state } = this;
-      const { isAsideVisible, isAddTagsVisible, isAddNoteBooksVisible, notes, notebooks, tags} = state;
+      const { visiblePanel, isAsideVisible, isAddTagsVisible, isAddNoteBooksVisible, notes, notebooks, tags} = state;
       return (
         <div className='app container-fluid'>
             <Header toggleAddTags={handleToggleAddTags} toggleAddNotebooks = {handleToggleAddNotebooks} toggleAside = {handleToggleAside} />
@@ -61,7 +56,9 @@ class AppContainer extends React.Component {
             isAddTagsVisible = {isAddTagsVisible} 
             notes={notes} 
             notebooks={notebooks} 
-            tags={tags}/>
+            tags={tags}
+            visiblePanel = {visiblePanel}/>
+            
         </div>
       )
     }

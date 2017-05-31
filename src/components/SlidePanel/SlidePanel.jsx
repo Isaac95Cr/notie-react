@@ -7,10 +7,16 @@ export const Directions = {
   Up: 'up',
   Down: 'down'
 }
+export const Panels = {
+  Notebooks: 'notebooks',
+  Notes: 'notes',
+  Tags: 'tags'
+}
 
-export const SlidePanel = ({ direction, isActive, children }) => {
+
+export const SlidePanel = ({ visiblePanel, direction, isActive, children, panel}) => {
   return (
-    <div className={`container-fluid slide-panel from-${direction} ${isActive ? `active-${direction}` : ''}`} >
+    <div className={`container-fluid slide-panel from-${direction} ${visiblePanel===panel ? `active-${direction}` : ''}`} >
       {children}
     </div>
   );
