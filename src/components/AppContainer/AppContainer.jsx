@@ -3,45 +3,69 @@ import MainSection from './../MainSection/MainSection';
 import Header from './../Header/Header';
 import api from './../../../api/api';
 
+const getFilteredList = (list, attributes = [], query) => {
+  return list.filter(item => getStringToSearch(attributes, item).toLowerCase().indexOf(query.toLowerCase()) >= 0)
+}
+
+const getStringToSearch = (keys, obj) => keys.reduce(((result, key) => `${result} ${obj[key]}`), '');
+
 class AppContainer extends React.Component {
     constructor(props) {
         super(props);
         this.handleToggleSlidePanel = this.handleToggleSlidePanel.bind(this);
+        this.handleOnNoteSearch = this.handleOnNoteSearch.bind(this);
+        this.handleOnNotebookSearch = this.handleOnNotebookSearch.bind(this);
+        this.handleOnTagSearch = this.handleOnTagSearch.bind(this);
         this.state = {
             visiblePanel: "",
             notes : [],
-            originalNoteList: [],
+            completeNoteList: [],
             notebooks : [],
-            originalNotebookList: [],
+            completeNotebookList: [],
             tags : [],
-            originalTagList: []
+            completeTagList: []
         }
     }
 
     componentDidMount() {
-        api.getAllNotes().then(res => this.setState({ notes: res.data, originalNoteList: res.data }));
-        api.getAllNoteBooks().then(res => this.setState({ notebooks: res.data, originalNotebookList: res.data }));
-        api.getAllTags().then(res => this.setState({ tags: res.data, originalTagList: res.data }));
+        api.getAllNotes().then(res => this.setState({ notes: res.data, completeNoteList: res.data }));
+        api.getAllNoteBooks().then(res => this.setState({ notebooks: res.data, completeNotebookList: res.data }));
+        api.getAllTags().then(res => this.setState({ tags: res.data, completeTagList: res.data }));
     }
 
-    handleToggleSlidePanel(event) {
-        if(event.currentTarget.nodeName == "BUTTON"){
-            event.stopPropagation();
-            const panel = event.currentTarget.id;
-            panel !== this.state.visiblePanel ?
-            this.setState(({visiblePanel:panel})) :
-            this.setState(({visiblePanel:""}));
+    handleToggleSlidePanel(e) {
+        if(e.currentTarget.nodeName == "BUTTON"){
+            e.stopPropagation();
+            const panel = e.currentTarget.id;
+            const { setState, state } = this;
+            panel !== state.visiblePanel ? this.setState({ visiblePanel: panel }) : this.setState({ visiblePanel: "" });
         }
     }
 
     handleOnNoteSearch(e) {
-      const query = e.target.value;
-      // TODO: Handle the note search
+      const query = e.target.value.toLowerCase();
+      const { completeNoteList } = this.state;
+      const filteredList = getFilteredList(completeNoteList, ['text', 'title'], query);
+      this.setState({ notes: filteredList });
+    }
+
+    handleOnTagSearch(e) {
+      const query = e.target.value.toLowerCase();
+      const { completeTagList } = this.state;
+      const filteredList = getFilteredList(completeTagList, ['name'], query);
+      this.setState({ tags: filteredList });
+    }
+
+    handleOnNotebookSearch(e) {
+      const query = e.target.value.toLowerCase();
+      const { completeNotebookList } = this.state;
+      const filteredList = getFilteredList(completeNotebookList, ['name'], query);
+      this.setState({ notebooks: filteredList });
     }
 
     render() {
-      const { handleToggleSlidePanel, state } = this;
-      const { visiblePanel, notes, notebooks, tags} = state;
+      const { handleToggleSlidePanel, handleOnNoteSearch, handleOnNotebookSearch, handleOnTagSearch } = this;
+      const { visiblePanel, notes, notebooks, tags, completeTagList, completeNotebookList} = this.state;
       return (
         <div className='app container-fluid'>
             <Header toggleSlidePanel = {handleToggleSlidePanel} />
@@ -49,7 +73,12 @@ class AppContainer extends React.Component {
               notes={notes}
               notebooks={notebooks}
               tags={tags}
+              allTags={completeTagList}
+              allNotebooks={completeNotebookList}
               visiblePanel = {visiblePanel}
+              onNoteSearch = {handleOnNoteSearch}
+              onNotebookSearch = {handleOnNotebookSearch}
+              onTagSearch = {handleOnTagSearch}
             />
         </div>
       )
