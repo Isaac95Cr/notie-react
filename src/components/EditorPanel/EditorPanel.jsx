@@ -10,6 +10,7 @@ class EditorPanel extends React.Component {
     this.handleAddNote = this.handleAddNote.bind(this)
     this.handleOnType = this.handleOnType.bind(this)
     this.handleClearEditor = this.handleClearEditor.bind(this)
+    this.clearEditor = this.clearEditor.bind(this)
     this.state = {
       editorText: '',
       editorTitle: '',
@@ -34,13 +35,16 @@ class EditorPanel extends React.Component {
       'notebook': '3',
       'tags': []
     }).then((res) => {
-      console.log(res);
-    }).catch((err) => {
-      console.log(err)
+      this.props.addNote(res.data);
+      this.clearEditor();
     })
   }
 
   handleClearEditor() {
+    this.clearEditor()
+  }
+
+  clearEditor() {
     this.setState({
       editorText: '',
       editorTitle: ''
