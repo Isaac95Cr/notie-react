@@ -5,13 +5,13 @@ import PropertyView from './../PropertyView/PropertyView';
 import { SlidePanel, Directions, Panels } from './../SlidePanel/SlidePanel';
 import './MainSection.scss'
 
-const MainSection = ({ visiblePanel, notes, notebooks, tags, onNoteSearch, onTagSearch, onNotebookSearch, onDelNote, allTags, allNotebooks }) => {
+const MainSection = ({ visiblePanel, notes, notebooks, tags, onNoteSearch, onTagSearch, onNotebookSearch, allTags, allNotebooks, onAddNote, onDelNote }) => {
     const { Right, Left } = Directions;
     const { Tags, Notebooks, Notes } = Panels;
     return (
       <main className='main-section'>
         <div className="panel-container container-fluid">
-          <EditorPanel />
+          <EditorPanel addNote={onAddNote}/>
           <SlidePanel direction={Left} visiblePanel={visiblePanel} panel={Notebooks}>
             <PropertyView items={notebooks} header={"Notebooks"} onSearch={onNotebookSearch} />
           </SlidePanel>

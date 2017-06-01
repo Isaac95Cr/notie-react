@@ -1,4 +1,5 @@
 @import "./../../scss/variables";
+@import "./../../scss/mixins";
 
 .editor-panel {
   .editor-tools-container {
@@ -6,5 +7,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+}
+
+.modal-inner {
+  margin: 5px 10px;
+  padding: 5px;
+  text-align: center;
+
+  @include sm {
+    margin: 20px 50px;
+    padding: 30px;
+  }
+
+  button {
+    background-color: transparent;
+    border-radius: 3px;
+    border: 1px solid black;
   }
 }

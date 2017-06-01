@@ -19,6 +19,7 @@ class AppContainer extends React.Component {
         this.handleOnNotebookSearch = this.handleOnNotebookSearch.bind(this);
         this.handleOnTagSearch = this.handleOnTagSearch.bind(this);
         this.handleDelNote = this.handleDelNote.bind(this);
+        this.handleAddNote = this.handleAddNote.bind(this);
         this.state = {
             visiblePanel: "",
             notes : [],
@@ -82,8 +83,15 @@ class AppContainer extends React.Component {
       this.setState({ notebooks: filteredList });
     }
 
+    handleAddNote(note) {
+      this.setState(({completeNoteList, notes}) => ({
+        completeNoteList: [...completeNoteList, note],
+        notes: [...notes, note]
+      }))
+    }
+
     render() {
-      const { handleToggleSlidePanel, handleOnNoteSearch, handleOnNotebookSearch, handleOnTagSearch, handleDelNote } = this;
+      const { handleToggleSlidePanel, handleOnNoteSearch, handleOnNotebookSearch, handleOnTagSearch, handleAddNote,  handleDelNote } = this;
       const { visiblePanel, notes, notebooks, tags, completeTagList, completeNotebookList} = this.state;
       return (
         <div className='app container-fluid'>
@@ -99,6 +107,7 @@ class AppContainer extends React.Component {
               onNotebookSearch = {handleOnNotebookSearch}
               onTagSearch = {handleOnTagSearch}
               onDelNote = {handleDelNote}
+              onAddNote = {handleAddNote}
             />
         </div>
       )
