@@ -1,6 +1,7 @@
 import React from 'react';
 import Editor from './../Editor/Editor';
 import EditorTools from './../EditorTools/EditorTools';
+import {ModalContainer, ModalDialog} from 'react-modal-dialog';
 import api from './../../../api/api';
 import './EditorPanel.scss';
 
@@ -11,9 +12,11 @@ class EditorPanel extends React.Component {
     this.handleOnType = this.handleOnType.bind(this)
     this.handleClearEditor = this.handleClearEditor.bind(this)
     this.clearEditor = this.clearEditor.bind(this)
+    this.handleCloseModal = this.handleCloseModal.bind(this)
     this.state = {
       editorText: '',
       editorTitle: '',
+      isShowingModal: false,
       toolButtons: [
         { iconName: 'fa-plus', onClick: this.handleAddNote },
         { iconName: 'fa-times', onClick: this.handleClearEditor }
@@ -37,11 +40,16 @@ class EditorPanel extends React.Component {
     }).then((res) => {
       this.props.addNote(res.data);
       this.clearEditor();
+      this.setState({isShowingModal: true})
     })
   }
 
   handleClearEditor() {
     this.clearEditor()
+  }
+
+  handleCloseModal() {
+    this.setState({isShowingModal: false})
   }
 
   clearEditor() {
@@ -52,8 +60,8 @@ class EditorPanel extends React.Component {
   }
 
   render() {
-    const { toolButtons, editorText, editorTitle } = this.state;
-    const { handleOnType } = this;
+    const { toolButtons, editorText, editorTitle, isShowingModal } = this.state;
+    const { handleOnType, handleCloseModal } = this;
     return (
       <section className = 'editor-panel row'>
         <div className='col-xs-2'>
@@ -62,6 +70,17 @@ class EditorPanel extends React.Component {
           </div>
         </div>
         <div className='col-xs-8'>
+          {
+            isShowingModal &&
+            <ModalContainer>
+              <ModalDialog>
+                <div className="modal-inner">
+                  <h4>Yeeey! Note Added!</h4>
+                  <button onClick={handleCloseModal}>Cool</button>
+                </div>
+              </ModalDialog>
+            </ModalContainer>
+          }
           <Editor text={editorText} title={editorTitle} onType={handleOnType} />
         </div>
       </section>
