@@ -9,6 +9,8 @@ const getFilteredList = (list, attributes = [], query) => {
 
 const getStringToSearch = (keys, obj) => keys.reduce(((result, key) => `${result} ${obj[key]}`), '');
 
+const getNewlist = (list, id) => list.filter( item => item._id !== id );
+
 class AppContainer extends React.Component {
     constructor(props) {
         super(props);
@@ -16,6 +18,7 @@ class AppContainer extends React.Component {
         this.handleOnNoteSearch = this.handleOnNoteSearch.bind(this);
         this.handleOnNotebookSearch = this.handleOnNotebookSearch.bind(this);
         this.handleOnTagSearch = this.handleOnTagSearch.bind(this);
+        this.handleDelNote = this.handleDelNote.bind(this);
         this.state = {
             visiblePanel: "",
             notes : [],
@@ -42,6 +45,22 @@ class AppContainer extends React.Component {
         }
     }
 
+    handleDelNote(e) {
+        const { notes, completeNoteList} = this.state;
+        if(e.currentTarget.nodeName == "BUTTON"){
+            e.stopPropagation();
+            const noteId = e.currentTarget.id;
+            api.delNote(noteId)
+            .then((res) => {
+              const newList = getNewlist(completeNoteList,noteId);
+              console.log(newList);
+              this.setState({ notes : newList, completeNoteList: newList});
+            }).catch((err) => {
+              console.log(err)
+            })
+          }
+    }
+
     handleOnNoteSearch(e) {
       const query = e.target.value.toLowerCase();
       const { completeNoteList } = this.state;
@@ -64,7 +83,7 @@ class AppContainer extends React.Component {
     }
 
     render() {
-      const { handleToggleSlidePanel, handleOnNoteSearch, handleOnNotebookSearch, handleOnTagSearch } = this;
+      const { handleToggleSlidePanel, handleOnNoteSearch, handleOnNotebookSearch, handleOnTagSearch, handleDelNote } = this;
       const { visiblePanel, notes, notebooks, tags, completeTagList, completeNotebookList} = this.state;
       return (
         <div className='app container-fluid'>
@@ -79,6 +98,7 @@ class AppContainer extends React.Component {
               onNoteSearch = {handleOnNoteSearch}
               onNotebookSearch = {handleOnNotebookSearch}
               onTagSearch = {handleOnTagSearch}
+              onDelNote = {handleDelNote}
             />
         </div>
       )

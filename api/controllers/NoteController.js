@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Note = mongoose.model('Note');
-const { saveModel, updateModel, sendJsonResponse, sendErrorResponse } = require('./../apiUtils');
+const { saveModel, removeModel, updateModel, sendJsonResponse, sendErrorResponse } = require('./../apiUtils');
 
 const getAll = (req, res) => {
   Note.find().exec((err,data)=>{
@@ -21,10 +21,18 @@ const update = (req, res) => {
   )
 }
 
+const del = (req,res)=>{
+    const { params, body } = req;
+    Note.findById(params.id,(err, note) => {
+        err ? sendErrorResponse(res, err) : removeModel(res,note);
+    });  
+};
+
 const Notes = {
     getAll,
     add,
-    update
+    update,
+    del
 }
 
 module.exports = Notes;

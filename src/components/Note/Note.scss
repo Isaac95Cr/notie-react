@@ -13,5 +13,26 @@
         margin: 0.5rem;
         height: 190px;
         overflow: hidden;
+        .note-header{
+            display: flex;
+            justify-content: space-between;
+            h4{ 
+                display: inline;
+            }
+            .icon-button{
+                opacity:0;
+                padding-top: 0;
+                height: $icon-button-dimension/2;
+                width: $icon-button-dimension/2;
+            }
+        }
+        &:hover{
+            .icon-button{
+                opacity:1;
+                padding-top: 0;
+                height: $icon-button-dimension/2;
+                width: $icon-button-dimension/2;
+            }
+        }
     }
 }

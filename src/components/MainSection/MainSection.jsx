@@ -5,7 +5,7 @@ import PropertyView from './../PropertyView/PropertyView';
 import { SlidePanel, Directions, Panels } from './../SlidePanel/SlidePanel';
 import './MainSection.scss'
 
-const MainSection = ({ visiblePanel, notes, notebooks, tags, onNoteSearch, onTagSearch, onNotebookSearch, allTags, allNotebooks }) => {
+const MainSection = ({ visiblePanel, notes, notebooks, tags, onNoteSearch, onTagSearch, onNotebookSearch, onDelNote, allTags, allNotebooks }) => {
     const { Right, Left } = Directions;
     const { Tags, Notebooks, Notes } = Panels;
     return (
@@ -19,7 +19,7 @@ const MainSection = ({ visiblePanel, notes, notebooks, tags, onNoteSearch, onTag
             <PropertyView items={tags} header={"Tags"} onSearch={onTagSearch} />
           </SlidePanel>
           <SlidePanel direction={Right} visiblePanel={visiblePanel} panel={Notes}>
-            <NoteView notes={notes} notebooks={allNotebooks} tags={allTags} onSearch={onNoteSearch} />
+            <NoteView notes={notes} notebooks={allNotebooks} tags={allTags} onSearch={onNoteSearch} onDelNote={onDelNote}/>
           </SlidePanel>
         </div>
       </main>

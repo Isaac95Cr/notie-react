@@ -39,7 +39,7 @@ routes.delete('/tags/:id', Tag.del);
 routes.get('/notes', Note.getAll);
 routes.post('/notes', Note.add);
 routes.put('/notes/:id', Note.update);
-//routes.delete('/notes/:id', Note.del);
+routes.delete('/notes/:id', Note.del);
 
 
 module.exports = routes;

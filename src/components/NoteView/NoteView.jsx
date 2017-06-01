@@ -4,7 +4,7 @@ import NavBarCollapse from '../../components/NavBarCollapse/NavBarCollapse';
 import NotesContainer from '../../components/NotesContainer/NotesContainer';
 import './NoteView.scss';
 
-const AsideNotes = ({ notes, notebooks, tags, onSearch }) => {
+const AsideNotes = ({ notes, notebooks, tags, onSearch, onDelNote }) => {
   return (
     <div className='row'>
       <div className="note-view">
@@ -13,7 +13,7 @@ const AsideNotes = ({ notes, notebooks, tags, onSearch }) => {
           <NavBarCollapse notebooks={notebooks} tags={tags} onSearch={onSearch}/>
         </div>
         <div className="col-md-9 col-xs-12">
-          <NotesContainer notes={notes} />
+          <NotesContainer notes={notes} onDelNote={onDelNote} />
         </div>
       </div>
     </div>
