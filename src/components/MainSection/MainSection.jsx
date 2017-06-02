@@ -5,13 +5,26 @@ import PropertyView from './../PropertyView/PropertyView';
 import { SlidePanel, Directions, Panels } from './../SlidePanel/SlidePanel';
 import './MainSection.scss'
 
-const MainSection = ({ visiblePanel, notes, notebooks, tags, onNoteSearch, onTagSearch, onNotebookSearch, allTags, allNotebooks, onAddNote, onDelNote }) => {
+const MainSection = ({ visiblePanel,
+                    notes,
+                    notebooks,
+                    tags,
+                    onNoteSearch,
+                    onTagSearch,
+                    onNotebookSearch,
+                    allTags,
+                    allNotebooks,
+                    onAddNote,
+                    onDelNote,
+                    onSelectNote,
+                    editorText,
+                    editorTitle }) => {
     const { Right, Left } = Directions;
     const { Tags, Notebooks, Notes } = Panels;
     return (
       <main className='main-section'>
         <div className="panel-container container-fluid">
-          <EditorPanel addNote={onAddNote}/>
+          <EditorPanel addNote={onAddNote} editorTitle={editorTitle} editorText={editorText} />
           <SlidePanel direction={Left} visiblePanel={visiblePanel} panel={Notebooks}>
             <PropertyView items={notebooks} header={"Notebooks"} onSearch={onNotebookSearch} />
           </SlidePanel>
@@ -19,7 +32,7 @@ const MainSection = ({ visiblePanel, notes, notebooks, tags, onNoteSearch, onTag
             <PropertyView items={tags} header={"Tags"} onSearch={onTagSearch} />
           </SlidePanel>
           <SlidePanel direction={Right} visiblePanel={visiblePanel} panel={Notes}>
-            <NoteView notes={notes} notebooks={allNotebooks} tags={allTags} onSearch={onNoteSearch} onDelNote={onDelNote}/>
+            <NoteView notes={notes} notebooks={allNotebooks} tags={allTags} onSearch={onNoteSearch} onDelNote={onDelNote} onSelectNote={onSelectNote}/>
           </SlidePanel>
         </div>
       </main>

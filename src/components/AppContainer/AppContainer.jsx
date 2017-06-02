@@ -27,7 +27,9 @@ class AppContainer extends React.Component {
             notebooks : [],
             completeNotebookList: [],
             tags : [],
-            completeTagList: []
+            completeTagList: [],
+            editorText: '',
+            editorTitle: ''
         }
     }
 
@@ -48,13 +50,12 @@ class AppContainer extends React.Component {
 
     handleDelNote(e) {
         const { notes, completeNoteList} = this.state;
-        if(e.currentTarget.nodeName == "BUTTON"){
+        if(e.currentTarget.nodeName == "BUTTON") {
             e.stopPropagation();
             const noteId = e.currentTarget.id;
             api.delNote(noteId)
             .then((res) => {
               const newList = getNewlist(completeNoteList,noteId);
-              console.log(newList);
               this.setState({ notes : newList, completeNoteList: newList});
             }).catch((err) => {
               console.log(err)
@@ -90,9 +91,13 @@ class AppContainer extends React.Component {
       }))
     }
 
+    handleOnSelectNote(id) {
+      console.log(id);
+    }
+
     render() {
-      const { handleToggleSlidePanel, handleOnNoteSearch, handleOnNotebookSearch, handleOnTagSearch, handleAddNote,  handleDelNote } = this;
-      const { visiblePanel, notes, notebooks, tags, completeTagList, completeNotebookList} = this.state;
+      const { handleToggleSlidePanel, handleOnNoteSearch, handleOnNotebookSearch, handleOnTagSearch, handleAddNote,  handleDelNote, handleOnSelectNote } = this;
+      const { visiblePanel, notes, notebooks, tags, completeTagList, completeNotebookList, editorText, editorTitle} = this.state;
       return (
         <div className='app container-fluid'>
             <Header toggleSlidePanel = {handleToggleSlidePanel} />
@@ -108,6 +113,9 @@ class AppContainer extends React.Component {
               onTagSearch = {handleOnTagSearch}
               onDelNote = {handleDelNote}
               onAddNote = {handleAddNote}
+              onSelectNote = {handleOnSelectNote}
+              editorTitle = {editorTitle}
+              editorText = {editorText}
             />
         </div>
       )

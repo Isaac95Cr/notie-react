@@ -2,10 +2,10 @@ import React from 'react';
 import './Note.scss';
 import IconButton from '../IconButton/base/IconButton';
 
-const Note = ({title, text, _id, onClick}) => {
+const Note = ({title, text, _id, onClick, onSelectNote}) => {
     return(
         <div className="note">
-          <div className="note-inner">
+          <div className="note-inner" onClick={() => onSelectNote(_id)}>
             <div className="note-header">
                <h4 className="note-title"> {title || 'Untitled'} </h4>
                <IconButton id={_id} iconName = "fa-times" onClick ={onClick}/>

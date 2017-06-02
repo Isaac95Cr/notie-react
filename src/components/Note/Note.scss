@@ -3,6 +3,8 @@
 
 .notes-container {
     .note {
+        cursor: pointer;
+    
         h4,
         p {
           color: #333;
@@ -16,7 +18,7 @@
         .note-header{
             display: flex;
             justify-content: space-between;
-            h4{ 
+            h4{
                 display: inline;
             }
             .icon-button{
